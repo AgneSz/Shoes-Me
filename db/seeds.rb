@@ -5,12 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Outfit.destroy_all
+User.destroy_all
 OutfitCategory.destroy_all
 ShoeCategory.destroy_all
 Category.destroy_all
-User.destroy_all
-puts 'seed the user owner with owner@test.com and password 123456 '
 user = User.create(email: "owner@test.com", password: "123456")
+
+["Topshop", "Zara", "H&M"].each do |name|
+  Outfit.create(brand: name, user: user)
+end
+
+puts 'seed the user owner with owner@test.com and password 123456 '
 
 puts 'seeding outfit categories...'
 names = %w[black red white grey navy tan leopard khaki orange yellow pink silver gold rose_gold multi pattern dress top_and_trouser_combo top_and_skirt_combo suit playsuit jumpsuit sport co_ord_set]

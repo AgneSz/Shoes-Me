@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   resources :feedback, only: [:destroy]
+  resources :users, only: [:show]
 end
