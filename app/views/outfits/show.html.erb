@@ -1,8 +1,22 @@
+
+                       
 <div class="col-sm-4">
   <div class="card">
     <div class="card-body"><%= @outfit.brand %></div>
   </div>
 </div>
 
+<%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>                       
 
-<%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%# card to display outfit pic %>
+
+<div class="container">
+  <div class="card">
+    <% if @outfit.photo.attached? %>
+    <%= cl_image_tag @outfit.photo.key, height: 600, width:300, crop: :fill, class: 'outfit-pic' %>
+    <% end %>
+  </div>
+</div>
+
+<%# form to add a shoe to an outfit %>
