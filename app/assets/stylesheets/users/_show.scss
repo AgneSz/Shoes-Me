@@ -1,0 +1,53 @@
+.top-bar {
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3px;
+  background-color: rgba(196,196,196,0.37);
+  h5 {
+    margin-bottom: 0;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.fcen {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+}
+.btn {
+  border-radius: 8px;
+}
+.pink-bar {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: $pink;
+  color: white;
+  width: 60%;
+  margin-left: 3px;
+}
+.outfit {
+  position: relative;
+  margin: 3px;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.likes {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.f-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 3px;
+}
