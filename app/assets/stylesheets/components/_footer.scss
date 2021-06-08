@@ -1,5 +1,5 @@
 footer {
-  background-color: #D7A5A3;
+  background-color: #E7C8C7;
   padding: 8px;
   position: fixed;
   bottom: 0;
@@ -7,6 +7,8 @@ footer {
   right: 0;
   list-style: none;
   ul {
+    display: flex;
+    justify-content: space-evenly;
     list-style: none;
     text-decoration: none;
     color: black;
