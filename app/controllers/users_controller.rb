@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @outfit = Outfit.new
+    @shoe = Shoe.new
     @user = User.find(params[:id])
   end
 end
