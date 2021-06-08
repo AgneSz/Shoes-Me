@@ -1,5 +1,8 @@
 <%= simple_form_for outfit do |f| %>
-  <%= f.input :brand %>
+  <%= f.input :event_type, collection: Outfit::EVENT_TYPES, as: :select, label_method: :humanize %>
+  <%= f.input :walking_time, collection: Outfit::WALKING_TIME, as: :select, label_method: :humanize %>
+  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:false).first(16), label:"Colour:", label_method: lambda { |category| category.name.humanize} %>
+  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:false).last(8), label:"Style:", label_method: lambda { |category| category.name.humanize} %>
 
   <% if outfit.new_record? %>
     <%= f.submit "Upload your outfit!", class: "btn btn-warning" %>
