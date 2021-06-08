@@ -6,11 +6,9 @@ footer {
   left: 0;
   right: 0;
   list-style: none;
-}
-
-ul {
-  list-style: none;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
+  ul {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+  }
 }
