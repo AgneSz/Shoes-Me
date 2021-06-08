@@ -6,3 +6,19 @@
 
 
 <%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
+
+<div>
+   <h3>My outfit shoes</h3>
+  <% @shoes.each do |shoe| %>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <%= shoe.brand %>
+            <%= link_to "update your shoes", edit_outfit_shoe_path(@outfit, shoe) %>
+            <%= link_to "delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
