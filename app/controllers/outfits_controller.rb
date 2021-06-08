@@ -50,6 +50,6 @@ class OutfitsController < ApplicationController
   end
 
   def outfit_params
-    params.require(:outfit).permit(:brand, :photo)
+    params.require(:outfit).permit(:photo, category_ids: [])
   end
 end

@@ -1,8 +1,6 @@
-
-<%# card to display outfit pic %>
-                       
-<div class="col-sm-4">
-  <div class="outfit_card">
+<div class="col-sm-4 mb-4">
+  <%# card to display outfit pic %>
+  <div class="card">
     <div class="card-body">
       <%# if @outfit.photo.attached? %>
         <%#= cl_image_tag @outfit.photo.key, height: 60, width:30, crop: :fill, class: 'outfit-pic' %>
@@ -13,43 +11,31 @@
         <%= @outfit.walking_time.humanize %>
       </div>
     </div>
-  </div>
-
-
-<%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
-
-<%# card to display shoe pic %>
-<%#= link_to "Upload Shoe Images", outfit_shoes(@outfit), method: :post %>
-<div class="col-sm-4">
-  <div class="card">
-      <%# if @shoe.photo.attached? %>
-        <%#= cl_image_tag @shoe.photo.key, height: 30, width:30, crop: :fill, class: 'outfit-pic' %>
-      <%# end %>
+    <%= render "outfits/form", outfit: @outfit %>
+    <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
 </div>
 
-<%# form to edit an outfit %>
-<%= render "outfits/form", outfit: @outfit %>
+
+  <%# card to display shoe pic %>
+  <div class="col-sm-4">
+    <div class="card">
+      <h3>My outfit shoes</h3>
+      <%= link_to "Upload your Shoes", new_outfit_shoe_path(@outfit) %>
+      <% @shoes.each do |shoe| %>
+        <%= shoe.brand %>
+        
+        <%#= render "shoes/form", outfit: @shoe %>
+        <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
+        <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+      <% end %>
+  </div>
+</div>
+
+
+<%# if @shoe.photo.attached? %>
+  <%#= cl_image_tag @shoe.photo.key, height: 30, width:30, crop: :fill, class: 'outfit-pic' %>
+<%# end %>
 
 <%# form to add a shoe to an outfit %>
 <%#= render "shoes/form", outfit: @shoe %>
-</div>
-
-<%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
-
-<div>
-   <h3>My outfit shoes</h3>
-  <% @shoes.each do |shoe| %>
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <%= shoe.brand %>
-            <%= link_to "update your shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-            <%= link_to "delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
-          </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<%# form to add a shoe to an outfit %>
