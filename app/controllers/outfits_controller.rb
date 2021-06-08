@@ -6,6 +6,7 @@ class OutfitsController < ApplicationController
   end
 
   def show
+    @shoes = @outfit.shoes
   end
 
   def new
