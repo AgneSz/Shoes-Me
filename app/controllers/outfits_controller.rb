@@ -2,7 +2,7 @@ class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @outfits = Outfit.all
+    @outfits = Outfit.all # checked!
   end
 
   def show
@@ -16,8 +16,10 @@ class OutfitsController < ApplicationController
     @outfit = Outfit.new(outfit_params)
     @outfit.user = current_user
     if @outfit.save
+      flash[:notice] = "Success!"
       redirect_to outfit_path(@outfit)
     else
+      flash[:alert] = "Ooops, something went wrong!"
       render :new
     end
   end
@@ -26,13 +28,18 @@ class OutfitsController < ApplicationController
   end
 
   def update
-    @outfit.update(outfit_params)
-    redirect_to outfit_path(@outfit)
+    if @outfit.update(outfit_params)
+      flash[:notice] = "Success!"
+      redirect_to outfit_path(@outfit)
+    else
+      flash[:alert] = "Ooops, something went wrong!"
+      render :edit
+    end
   end
 
   def destroy
     @outfit.destroy
-    redirect_to my_account_path
+    redirect_to user_path(current_user)
   end
 
   private

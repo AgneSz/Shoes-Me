@@ -1,3 +1,4 @@
+
 <h1><%= user.name %></h1>
 <h3><%= user.email %></h3>
 
@@ -5,3 +6,5 @@
 
 
 <%= current_user.outfits.each do |outfit| %>
+
+<%= render "outfits/form", outfit: @outfit %>

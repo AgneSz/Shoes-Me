@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <% @outfits.each do |outfit| %>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body"><%= outfit.brand %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
