@@ -1,0 +1,9 @@
+<%= simple_form_for outfit do |f| %>
+  <%= f.input :brand %>
+
+  <% if outfit.new_record? %>
+    <%= f.submit "Upload your outfit!", class: "btn btn-warning" %>
+  <% else %>
+    <%= f.submit "Edit your outfit!", class: "btn btn-warning" %>
+  <% end %>
+<% end %>
