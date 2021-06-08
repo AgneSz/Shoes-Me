@@ -4,6 +4,7 @@
       <div class="col-sm-4">
         <div class="card">
           <div class="card-body"><%= outfit.brand %></div>
+          <%= link_to "this outfit", outfit_path(outfit) %>
         </div>
       </div>
     <% end %>
