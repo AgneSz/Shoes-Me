@@ -1,10 +1,3 @@
-<div class="col-sm-4">
-  <div class="card">
-    <div class="card-body"><%= @outfit.brand %></div>
-  </div>
-</div>
-
-
 <%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
 
@@ -22,3 +15,5 @@
     </div>
   <% end %>
 </div>
+<%# form to add a shoe to an outfit %>
+
