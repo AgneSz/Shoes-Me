@@ -6,11 +6,19 @@ footer {
   left: 0;
   right: 0;
   list-style: none;
-  ul {
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    text-decoration: none;
-    color: black;
-  }
+  z-index: 2000;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  margin-right: 20px;
+}
+
+footer img {
+  width: 30px;
+  height: 30px;
 }
