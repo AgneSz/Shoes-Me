@@ -1,4 +1,5 @@
 <div class="margin-container">
+  <h1>outfit form</h1>
   <%= simple_form_for outfit do |f| %>
     <%= f.input :event_type, collection: Outfit::EVENT_TYPES, as: :select, label_method: :humanize %>
     <%= f.input :walking_time, collection: Outfit::WALKING_TIME, as: :select, label_method: :humanize %>

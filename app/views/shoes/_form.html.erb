@@ -1,4 +1,5 @@
 <div class="margin-container">
+  <h1>Shoes form</h1>
   <%= simple_form_for [outfit, shoe] do |f| %>
     <%= f.input :photos, as: :file, input_html: {multiple: true} %>
     <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).first(16), label:"Colour:", label_method: lambda { |category| category.name.humanize} %>
