@@ -3,13 +3,13 @@
   position: relative;
   background-position: center;
   background-size: cover;
-  height: 200px;
+  height: 300px;
   color: #eee;
 }
 
 .header-text {
   position: absolute;
-  bottom: 24px;
+  bottom: 60px;
   left: 8px;
   color: white;
   font-size: 20px;
@@ -17,7 +17,10 @@
 
 .header-text h1 {
   position: absolute;
-  bottom: 36px;
+  bottom: 50px;
+  font-family: 'Anton', sans-serif;
+  // font-family: 'Comfortaa', cursive;
+  text-size: 200px;
 }
 
 .home-bottom {
@@ -26,8 +29,10 @@
   border-radius: 18px;
   width: 100%;
   padding: 40px;
-  padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 200px;
   z-index: 1000;
+  top: 280px;
 }
 
 .home-bottom img {
