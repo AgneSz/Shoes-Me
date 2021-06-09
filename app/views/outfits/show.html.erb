@@ -1,6 +1,6 @@
 <%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
 
-<div class="container-fluid">
+<div class="container-fluid margin-container">
   <div class="row">
     <div class="col-9">
       <div class="">
@@ -10,7 +10,7 @@
         <div class=""><%= @outfit.brand %></div>
         <%= @outfit.event_type %>
         <%= @outfit.walking_time.humanize %>
-        <%= render "outfits/form", outfit: @outfit %>
+        <%= link_to "Edit outfit", edit_outfit_path(@outfit) %>
         <%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     </div>
