@@ -15,20 +15,15 @@
     </div>
   </div>
 
-  <div class='p-5'>
+  <div class='p-3'>
 
   </div>
 
-  <div class="pink-bar">
+  <div class="border-top">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item col-6">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
         <h2 class="completed-look">Completed Looks</h2></a>
-        <div class="f-row">
-          <% current_user.outfits.each do |outfit| %>
-            <%= render "shared/outfit", outfit: outfit %>
-          <% end %>
-        </div>
       </li>
       <li class="nav-item col-6">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
@@ -37,6 +32,21 @@
       </li>
     </ul>
   </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="row">
+        <div class="user-cards">
+        <% current_user.outfits.each do |outfit| %>
+          <%= link_to outfit_path(outfit), class:'show-link' do %>
+            <%= render "shared/outfit", outfit: outfit %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
+
+</div>
 
   <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 </div>
