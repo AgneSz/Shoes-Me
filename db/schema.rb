@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_102201) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "event_type"
     t.string "walking_time"
+    t.datetime "event_date"
     t.index ["user_id"], name: "index_outfits_on_user_id"
   end
 

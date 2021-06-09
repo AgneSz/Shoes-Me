@@ -6,6 +6,7 @@ class OutfitsController < ApplicationController
   end
 
   def show
+
     @shoes = @outfit.shoes
   end
 
@@ -16,10 +17,12 @@ class OutfitsController < ApplicationController
   def create
     @outfit = Outfit.new(outfit_params)
     @outfit.user = current_user
+    @user = current_user
     if @outfit.save
       flash[:notice] = "Success!"
       redirect_to outfit_path(@outfit)
     else
+      raise
       flash[:alert] = "Ooops, something went wrong!"
       render :new
     end

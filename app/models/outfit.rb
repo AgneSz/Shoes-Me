@@ -4,8 +4,7 @@ class Outfit < ApplicationRecord
   belongs_to :user
   has_many :shoes, dependent: :destroy
   has_many :feedbacks, through: :shoes
-  has_many :outfit_categories
+  has_many :outfit_categories, dependent: :destroy
   has_many :categories, through: :outfit_categories
-  validates :brand, presence: true
   has_one_attached :photo
 end

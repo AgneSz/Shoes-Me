@@ -1,0 +1,13 @@
+<%= simple_form_for(outfit) do |f| %>
+  <%= f.input :event_type, collection: Outfit::EVENT_TYPES, as: :select, label_method: :humanize %>
+  <%= f.input :event_date, as: :string, required: false, input_html: {class: "flattpicker"} %>
+  <%= f.input :walking_time, collection: Outfit::WALKING_TIME, as: :select, label_method: :humanize %>
+  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:false).last(8), label:"Outfit Style:", label_method: lambda { |category| category.name.humanize} %>
+  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:false).first(16), label:"Main Outfit Colour:", label_method: lambda { |category| category.name.humanize} %>
+  <%= f.input :photo, as: :file %>
+  <% if outfit.new_record? %>
+    <%= f.submit "Upload your outfit!", class: "btn btn-warning" %>
+  <% else %>
+    <%= f.submit "Edit your outfit!", class: "btn btn-warning" %>
+  <% end %>
+<% end %>
