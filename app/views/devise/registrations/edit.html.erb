@@ -14,20 +14,28 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
 
-        <%= f.input :password,
-        hint: "leave it blank if you don't want to change it",
-        required: false,
-        input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-        required: false,
-        input_html: { autocomplete: "new-password" } %>
-        <%= f.input :username,
-        required: true %>
-        <%= f.input :avatar, as: :file %>
-        <%= f.input :current_password,
-        hint: "we need your current password to confirm your changes",
-        required: true,
-        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :password,
+                        hint: "leave it blank if you don't want to change it",
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        placeholder: "Password",
+                        label: false %>
+            <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        placeholder: "Password_confirmation",
+                        label: false %>
+            <%= f.input :username,
+                        required: true,
+                        placeholder: "Username",
+                        label: false %>
+            <%= f.input :avatar, as: :file %>
+            <%= f.input :current_password,
+                        hint: "we need your current password to confirm your changes",
+                        required: true,
+                        input_html: { autocomplete: "current-password" },
+                        placeholder: "Current_password"
+                        label: false %>
       </div>
 
       <div class="form-actions">

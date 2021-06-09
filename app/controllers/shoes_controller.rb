@@ -7,7 +7,6 @@ class ShoesController < ApplicationController
   end
 
   def create
-    raise
     @shoe = Shoe.new(shoe_params)
     @shoe.outfit = @outfit
     if @shoe.save
