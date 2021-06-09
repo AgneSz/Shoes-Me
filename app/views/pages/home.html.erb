@@ -1,10 +1,22 @@
-<h1>Shoes-Me</h1>
-<%= link_to "Get one now!", class: "btn-blue" %>
+<div class="home">
+  <div class='header' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('banner.jpeg') %>)">
+      <div class="header-text">
+      <h1>Shoes-Me</h1>
+      <%= link_to "Learn More Here!", outfits_path, class: "blue-btn" %>
+      </div>
+  </div>
+  <div class="home-bottom">
+    <div class="home-call">
+      <%= link_to "/" do %>
+        <%= image_tag 'photo.png' %>
+      <% end %>
+      <h3>Upload Photo</h3>
 
-<%=  %>
-<h3>Upload Photo</h3>
-
-<%=  %>
-<h3>Vote</h3>
-
-<p>Need help picking the right pair? We'll help you choose a new pair or our user will cast their votes on yours!</p>
+      <%= link_to "outfits" do %>
+        <%= image_tag 'social-media.png' %>
+      <% end %>
+      <h3>Vote</h3>
+    </div>
+    <p>Need help picking the right pair? We'll help you choose a new pair or our user will cast their votes on yours!</p>
+  </div>
+</div>

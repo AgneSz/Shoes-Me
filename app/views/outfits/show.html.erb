@@ -1,4 +1,3 @@
-<%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
 
 <div class="container-fluid">
@@ -9,17 +8,33 @@
           <%= cl_image_tag @outfit.photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
         <div class=""><%= @outfit.brand %></div>
+        <%= @outfit.event_type %>
+        <%= @outfit.walking_time.humanize %>
+        <%= render "outfits/form", outfit: @outfit %>
+        <%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     </div>
     <div class="col-3">
+      <%= link_to "Upload your Shoes", new_outfit_shoe_path(@outfit) %>
       <% @shoes.each do |shoe| %>
         <div class="">
           <% shoe.photos.each do |photo| %>
             <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
           <% end %>
         </div>
+        <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
+        <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
       <% end %>
     </div>
   </div>
 </div>
 
+
+
+
+<%# if @shoe.photo.attached? %>
+  <%#= cl_image_tag @shoe.photo.key, height: 30, width:30, crop: :fill, class: 'outfit-pic' %>
+<%# end %>
+
+<%# form to add a shoe to an outfit %>
+<%#= render "shoes/form", outfit: @shoe %>
