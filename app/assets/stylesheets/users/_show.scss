@@ -23,12 +23,17 @@
 }
 .pink-bar {
   padding: 12px;
-  border-radius: 8px;
+  // border-radius: 8px;
   background-color: $pink;
   color: white;
-  width: 60%;
+  // width: 60%;
   margin-left: 3px;
+  a {
+    background-color: $pink;
+  text-decoration: none;
+  }
 }
+
 .outfit {
   position: relative;
   margin: 3px;
