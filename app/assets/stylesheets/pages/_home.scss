@@ -25,14 +25,13 @@
 
 .home-bottom {
   background-color:white;
-  position: absolute;
+  // position: absolute;
   border-radius: 18px;
   width: 100%;
   padding: 40px;
   padding-top: 60px;
-  padding-bottom: 200px;
   z-index: 1000;
-  top: 280px;
+  // top: 280px;
 }
 
 .home-bottom img {
@@ -41,7 +40,27 @@
 }
 
 .home-call {
-  // display: flex;
-  // justify-content: center;
   text-align: center;
+}
+
+.sign-up {
+  margin: 20px 140px 20px;
+}
+
+.modal-header {
+  background-color: #E7C8C7;
+  color: white;
+  font-weight: bold;
+  h5 {
+    font-family: 'Anton', sans-serif;
+  }
+}
+
+.modal-title {
+  text-align: center;
+  width: 100%;
+}
+
+.modal-dialog{
+  border-radius: 50px;
 }

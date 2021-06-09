@@ -1,28 +1,32 @@
-<div class="container">
-  <div class="row">
-    <% @outfits.each do |outfit| %>
-      <div class="col-9">
-        <div class="card">
-          <% if outfit.photo.attached? %>
-            <%= cl_image_tag outfit.photo.key, height: 700, width: 500, crop: :fill %>
-          <% end %>
-          <div class="card-body"><%= outfit.brand %></div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="card">
-          <% outfit.shoes.each do |shoe| %>
-            <% if shoe.photos.first.present? %>
-              <div>
-                <%= cl_image_tag shoe.photos.first.key, height: 100, width: 100, crop: :fill %>
+  <div class="d-flex">
+    <div class="center-panel">
+      <div class="container">
+        <div class="row">
+          <% @outfits.each do |outfit| %>
+            <div class="col-9">
+              <div class="card">
+                <% if outfit.photo.attached? %>
+                  <%= cl_image_tag outfit.photo.key, height: 700, width: 500, crop: :fill %>
+                <% end %>
+                <div class="card-body"><%= outfit.brand %></div>
               </div>
-            <% end %>
+            </div>
+            <div class="col-3">
+              <div class="card">
+                <div class="class"></div>
+                <% outfit.shoes.each do |shoe| %>
+                  <% if shoe.photos.first.present? %>
+                    <div>
+                      <%= cl_image_tag shoe.photos.first.key, height: 100, width: 100, crop: :fill %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
 
 
 

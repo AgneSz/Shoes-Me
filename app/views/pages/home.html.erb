@@ -2,7 +2,9 @@
   <div class='header' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('banner.jpeg') %>)">
       <div class="header-text">
       <h1>Shoes-Me</h1>
-      <%= link_to "Learn More Here!", outfits_path, class: "blue-btn" %>
+      <button type="button" class="blue-btn" data-toggle="modal" data-target="#exampleModal">
+        Learn More Here!
+      </button>
       </div>
   </div>
   <div class="home-bottom">
@@ -13,7 +15,7 @@
       <h3>Upload Photo</h3>
       <br>
       <br>
-      <%= link_to "outfits" do %>
+      <%= link_to "/outfits" do %>
         <%= image_tag 'social-media.png' %>
       <% end %>
       <h3>Vote</h3>
@@ -23,3 +25,57 @@
     </div>
   </div>
 </div>
+
+
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog rounded-3" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">How it works... </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li>Upload outifit image </li>
+          <li>Upload up to 3 of your shoe images</li>
+          <li>We'll auto generate a 4th option for you</li>
+          <li>Our users will vote on the pair that best suits your outfit</li>
+          <li>You can then vote on our other users shoe options to complete their outfit looks </li>
+          <li>YOu can choose to buy the auto generated pair or save to your wishlist and buy later</li>
+          <li>Look fabulous knowing that you have the votes of many users on your final look!</li>
+        </ol>
+        <div class="sign-up" >
+          <% if user_signed_in? %>
+            <%= link_to "See all the outfits!", outfits_path, class: "blue-btn"  %>
+          <% else %>
+            <%= link_to 'Sign up here', new_user_registration_path, class: "nav-log" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
