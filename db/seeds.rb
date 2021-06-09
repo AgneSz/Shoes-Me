@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "open-uri"
+
 Outfit.destroy_all
 User.destroy_all
 OutfitCategory.destroy_all
@@ -14,8 +17,8 @@ Category.destroy_all
 puts 'seed the user owner with owner@test.com and password 123456 '
 user = User.create(email: "owner@test.com", password: "123456")
 
-
-
+i = 0
+photos = ["https://li0.rightinthebox.com/images/x/201906/nrcr1559558239744.jpg","https://img.ltwebstatic.com/images3_pi/2020/08/20/1597906168b17a956b4736ce928d9bfc5b46aebde0_thumbnail_600x.webp","https://media.theeverygirl.com/wp-content/uploads/2019/10/fall-outfits-f.jpeg"]
 puts 'seeding outfits...'
 3.times do
   outfit = Outfit.new(
@@ -24,7 +27,10 @@ puts 'seeding outfits...'
     event_type: %w[wedding_or_bridal business cocktail_party ball_or_prom party night_out formal_event casual_event date outdoor_event].sample,
     walking_time: %w[under_one_hour up_to_5_hours more_than_5_hours].sample
   )
+    file = URI.open(photos[i])
+    outfit.photo.attach(io: file, filename: "outfit.png", content_type: 'image/png')
   outfit.save!
+  i += 1
 end
 puts 'seeding outfits complete'
 
