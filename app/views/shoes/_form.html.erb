@@ -1,10 +1,13 @@
-<%= simple_form_for [outfit, shoe] do |f| %>
-  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).first(16), label:"Colour:", label_method: lambda { |category| category.name.humanize} %>
-  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).slice(16...25), label:"Style:", label_method: lambda { |category| category.name.humanize} %>
-  <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).last(3), label:"Heel Height:", label_method: lambda { |category| category.name.humanize} %>
-  <% if shoe.new_record? %>
-    <%= f.submit "Create your shoes!", class: "btn btn-warning" %>
-  <% else %>
-    <%= f.submit "Edit your shoes!", class: "btn btn-warning" %>
+<div class="margin-container">
+  <%= simple_form_for [outfit, shoe] do |f| %>
+    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
+    <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).first(16), label:"Colour:", label_method: lambda { |category| category.name.humanize} %>
+    <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).slice(16...25), label:"Style:", label_method: lambda { |category| category.name.humanize} %>
+    <%= f.association :categories, as: :check_boxes, collection:  Category.where(shoe:true).last(3), label:"Heel Height:", label_method: lambda { |category| category.name.humanize} %>
+    <% if shoe.new_record? %>
+      <%= f.submit "Create your shoes!", class: "btn btn-warning" %>
+    <% else %>
+      <%= f.submit "Edit your shoes!", class: "btn btn-warning" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
