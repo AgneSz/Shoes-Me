@@ -1,18 +1,21 @@
 
-<div class="container-fluid margin-container">
+<div class="container d-flex justify-content-between p-4">
   <div class="row">
     <div class="col-9">
       <div class="">
         <% if @outfit.photo.attached? %>
-          <%= cl_image_tag @outfit.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag @outfit.photo.key, height: 350, width: 200, crop: :fill %>
         <% end %>
-        <div class=""><%= @outfit.brand %></div>
-        <%= @outfit.user.username %>
-        <%= @outfit.event_date %>
-        <%= @outfit.event_type %>
-        <%#= @outfit.walking_time.humanize %>
-        <%= render "outfits/edit_form", outfit: @outfit %>
-        <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+        <div class="outfit_description">
+          <%= @outfit.user.username %>
+          <%= @outfit.event_date %>
+          <%= @outfit.event_type %>
+          <%#= @outfit.walking_time.humanize %>
+          <div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Edit Outfit
+          </div>
+          <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
       </div>     
     </div>
   </div>
@@ -21,44 +24,70 @@
     <%# card to display shoe pic %>
     <div class="sm-4 col-sm-4">
       <div class="card">
-        <h3>My outfit shoes</h3>
-        <%#= render "shoes/form", outfit: @shoe %>
-        <%= link_to "Upload your Shoes", new_outfit_shoe_path(@outfit) %>
-        <% @shoes.each do |shoe| %>
-          <div class="card">
+        <div class="fcen">
+          <div class="btn btn-primary" data-toggle="modal" data-target="#newshoeModal">
+            Upload Shoes
+          </div>
+        </div>
+        <div class="col-3">
+          <% @shoes.each do |shoe| %>
+            <span id="shoe-<%= shoe.id %>">
+              <!-- #like button starts -->
+              <span>
+                <%= shoe.votes_for.count%>
+              </span>
+              <% if current_user.liked? shoe %>
+                <%= link_to like_shoe_path(shoe, "unlike"), method: :put, remote: :true do  %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to like_shoe_path(shoe, "like"), method: :put, remote: :true do  %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              <% end %>
+            </span> 
+              <% if shoe.photo.attached? %>
+                <%= cl_image_tag shoe.photo.key, height: 100, width: 100, crop: :fill %>
+              <% end %>
             <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
             <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
-          </div>
-        <% end %>
-       </div>
-    </div>
-
-    <div class="col-3">
-      <%= link_to "Upload your Shoes", new_outfit_shoe_path(@outfit) %>
-      <% @shoes.each do |shoe| %>
-        <span id="shoe-<%= shoe.id %>">
-          <!-- #like button starts -->
-          <span>
-            <%= shoe.votes_for.count%>
-          </span>
-          <% if current_user.liked? shoe %>
-            <%= link_to like_shoe_path(shoe, "unlike"), method: :put, remote: :true do  %>
-              <i class="fas fa-heart"></i>
-            <% end %>
-          <% else %>
-            <%= link_to like_shoe_path(shoe, "like"), method: :put, remote: :true do  %>
-              <i class="far fa-heart"></i>
-            <% end %>
           <% end %>
-        </span>
-        <% shoe.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
-        <% end %>
-        <%#= render "shoes/form", outfit: @shoe %>
-        <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-        <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
-      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Modal to edit outfit -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New outfit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <%= render "outfits/edit_form", outfit: @outfit %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to Upload Shoes -->
+<div class="modal fade" id="newshoeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Shoes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <%= render "shoes/form", outfit: @shoe %>
+      </div>
+    </div>
+  </div>
+</div>
