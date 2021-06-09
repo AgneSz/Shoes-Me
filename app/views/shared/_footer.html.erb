@@ -10,6 +10,7 @@
         <%= link_to "outfits" do %>
         <%= image_tag 'social-media.png' %>
         <% end %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%= image_tag current_user.avatar.attached? ? current_user.avatar : "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
