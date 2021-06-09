@@ -53,6 +53,6 @@ class ShoesController < ApplicationController
   end
 
   def shoe_params
-    params.require(:shoe).permit(category_ids: [], photos: [])
+    params.require(:shoe).permit(:photo, category_ids: [])
   end
 end
