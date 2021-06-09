@@ -1,6 +1,6 @@
 class ShoesController < ApplicationController
   before_action :set_outfit, only: [:new, :create, :edit, :update]
-  before_action :set_shoe, only: [:edit, :update, :destroy]
+  before_action :set_shoe, only: [:edit, :update, :destroy, :like]
 
   def new
     @shoe = Shoe.new
@@ -30,6 +30,16 @@ class ShoesController < ApplicationController
   def update
     @shoe.update(shoe_params)
     redirect_to outfit_path(@outfit)
+  end
+
+  def like
+    @outfit = @shoe.outfit
+    if params[:format] == "like"
+      @shoe.liked_by current_user
+    elsif params[:format] == "unlike"
+      @shoe.unliked_by current_user
+    end
+    redirect_to outfit_path(@outfit, anchor: "shoe-#{@shoe.id}")
   end
 
   private
