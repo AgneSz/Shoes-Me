@@ -2,8 +2,11 @@
   <div class="top-bar">
     <%= image_tag @user.avatar, alt: "alttext", class: 'avatar mr-3' %>
     <div>
-      <h5><%= @user.username %></h5>
-      <p><%= @user.email %></p>
+      <div class="user-info">
+        <h5><%= @user.username %></h5>
+        <p><%= @user.email %></p>
+      </div>
+        <%= link_to "Edit profile", edit_user_registration_path %>
     </div>
   </div>
   <div class="fcen">
@@ -11,19 +14,34 @@
       UPLOAD
     </div>
   </div>
+
+  <div class='p-5'>
+
+  </div>
+
   <div class="pink-bar">
-    Completed Looks
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item col-6">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+        <h2 class="completed-look">Completed Looks</h2></a>
+        <div class="f-row">
+          <% current_user.outfits.each do |outfit| %>
+            <%= render "shared/outfit", outfit: outfit %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item col-6">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+        <h2 class="wishlist">Wishlist</h2></a>
+        <!-- wishlist - only auto generated in next project phase - atm placeholder -->
+      </li>
+    </ul>
   </div>
-  <div class="f-row">
-    <% current_user.outfits.each do |outfit| %>
-      <%= render "shared/outfit", outfit: outfit %>
-    <% end %>
-  </div>
-  <div class="pink-bar">
-    Wishlist
-    <!-- # wishlist - only auto generated in next project phase - atm placeholder -->
-  </div>
+
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 </div>
+
+<!-- modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
