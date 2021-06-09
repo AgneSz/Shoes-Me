@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_134654) do
+ActiveRecord::Schema.define(version: 2021_06_09_042057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_134654) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "event_type"
     t.string "walking_time"
+    t.datetime "event_date"
     t.index ["user_id"], name: "index_outfits_on_user_id"
   end
 

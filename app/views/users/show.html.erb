@@ -1,6 +1,6 @@
 <div>
   <div class="top-bar">
-    <%= image_tag @user.avatar, alt: "alttext", class: 'avatar mr-3' %>
+    <%= image_tag @user.avatar.attached? ? @user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
     <div>
       <h5><%= @user.username %></h5>
       <p><%= @user.email %></p>
@@ -35,11 +35,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [current_user, @outfit] do |f| %>
-          <%= f.input :brand %>
-          <%= f.input :photo, as: :file %>
-          <%= f.submit %>
-        <% end %>
+          <%= render "outfits/form", outfit: @outfit, user: @user %>
       </div>
     </div>
   </div>
