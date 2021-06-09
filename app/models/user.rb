@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :outfits
   has_many :feedbacks
   has_one_attached :avatar
+
+  acts_as_voter
 end

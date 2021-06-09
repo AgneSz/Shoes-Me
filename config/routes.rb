@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :shoes, only: [:destroy] do
+    # like method in shoes controller
+    member do
+      put "like" => "shoes#like"
+    end
     resources :feedback, only: [:create, :update]
   end
 
