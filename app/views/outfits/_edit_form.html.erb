@@ -1,5 +1,4 @@
-<div class="margin-container">
-<%= simple_form_for [ user, outfit ] do |f| %>
+<%= simple_form_for(outfit) do |f| %>
   <%= f.input :event_type, collection: Outfit::EVENT_TYPES, as: :select, label_method: :humanize %>
   <%= f.input :event_date, as: :string, required: false, input_html: {class: "flattpicker"} %>
   <%= f.input :walking_time, collection: Outfit::WALKING_TIME, as: :select, label_method: :humanize %>
@@ -11,6 +10,4 @@
   <% else %>
     <%= f.submit "Edit your outfit!", class: "btn btn-warning" %>
   <% end %>
-</div>
-
-
+<% end %>
