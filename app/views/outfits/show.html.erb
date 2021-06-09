@@ -1,19 +1,25 @@
 <%= link_to "bin", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "create shoe", new_outfit_shoe_path(@outfit) %>
 
-<div>
-   <h3>My outfit shoes</h3>
-  <% @shoes.each do |shoe| %>
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <%= shoe.brand %>
-            <%= link_to "update your shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-            <%= link_to "delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
-          </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-9">
+      <div class="">
+        <% if @outfit.photo.attached? %>
+          <%= cl_image_tag @outfit.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <div class=""><%= @outfit.brand %></div>
       </div>
     </div>
-  <% end %>
+    <div class="col-3">
+      <% @shoes.each do |shoe| %>
+        <div class="">
+          <% shoe.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<%# form to add a shoe to an outfit %>
 
