@@ -15,7 +15,7 @@
               <div class="card">
                 <div class="class"></div>
                 <% outfit.shoes.each do |shoe| %>
-                  <% if shoe.photos.first.present? %>
+                  <% if shoe.photo.attached? %>
                     <div>
                       <%= cl_image_tag shoe.photos.first.key, height: 100, width: 100, crop: :fill %>
                     </div>
@@ -27,8 +27,4 @@
         </div>
     </div>
   </div>
-
-
-
-
 
