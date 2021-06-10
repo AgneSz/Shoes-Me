@@ -1,6 +1,7 @@
 <div class="whole_outfit_container">
   <div class="outfit_header">
     <h2>My Outfit</h2>
+    <p>Upload up to 3 Shoe images here</p>
   </div>
   <%# card to display outfit pic %>
   <div class="container d-flex justify-content-between p-2">
@@ -40,7 +41,9 @@
     </div>
   </div>
   <div class="description_box">
-    <h2>This is where description stuff goes</h2>
+    <p>Event date: <%= @outfit.event_date.strftime("%a, %d %b %y, %l:%M %p") %></p>
+    <p>Event type: <%= @outfit.event_type.humanize %></p>
+    <p>Amount of walking: <%= @outfit.walking_time.humanize %></p>
   </div>
 </div>
 
