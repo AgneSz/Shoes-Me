@@ -12,16 +12,32 @@
                   <div class="card-body"><%= outfit.brand %></div>
                 </div>
               </div>
-              <div class="col-3">
-                <!-- <div class="card"> -->
-                  <!-- <div class="class"></div> -->
-                  <% outfit.shoes.each do |shoe| %>
-                    <% if shoe.photo.attached? %>
-                      <div>
-                        <%= cl_image_tag shoe.photo, height: 100, width: 100, crop: :fill %>
-                      </div>
-                    <% end %>
-                  <% end %>
+            </div>
+            <div class="col-3">
+              <!-- <div class="card"> -->
+                <!-- <div class="class"></div> -->
+                <% outfit.shoes.each do |shoe| %>
+                  <% if shoe.photo.attached? %>
+                    <div>
+                      <%= cl_image_tag shoe.photo, height: 100, width: 100, crop: :fill %>
+                    </div>
+                    <span id="shoe-<%= shoe.id %>">
+                      <!-- #like button starts -->
+                      <span>
+                        <%= shoe.votes_for.count%>
+                      </span>
+                         <% if current_user.liked? shoe %>
+                        <%= link_to like_shoe_path(shoe, "unlike"), method: :put, remote: :true do  %>
+                          <i class="fas fa-heart"></i>
+                        <% end %>
+                        <% else %>
+                        <% if ((Time.now - shoe.created_at) <= 10) %>
+                        <%= link_to like_shoe_path(shoe, "like"), method: :put, remote: :true do  %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                        <% end %>
+                      <% end %>
+                    </span>
                 <!-- </div> -->
               </div>
             </div>
@@ -29,4 +45,7 @@
         </div>
     </div>
   </div>
+
+
+
 
