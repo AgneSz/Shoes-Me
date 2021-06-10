@@ -6,12 +6,18 @@
   margin-right: 12px;
   position: relative;
   border-radius: 8px;
+  border-style: solid;
+  border-color: rgb(226, 222, 222);
 }
 .shoe-div {
+  background-size: cover;
+  background-position: center;
   width: 100%;
   padding-bottom: 100%;
+  border-style: solid;
+  border-color: rgb(226, 222, 222);
   border-radius: 8px;
-  box-shadow: 0 3 4 rgba(0,0,0,0.2);
+  box-shadow: 0 3 4 rgba(0,0,0,0.4);
   position: relative;
   margin-bottom: 12px;
   border-radius: 8px;
@@ -26,6 +32,8 @@
 .add-shoe-div {
   width: 100%;
   padding-bottom: 100%;
+  border-style: solid;
+  border-color: rgb(226, 222, 222);
   border-radius: 8px;
   box-shadow: 0 3 4 rgba(0,0,0,0.2);
   position: relative;
@@ -44,4 +52,24 @@
   top: 5px;
   right: 5px;
   z-index: 100;
+}
+
+.whole_outfit_container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 3 4 rgba(0,0,0,0.2);
+  padding: 8px;
+  margin: 10px;
+  border-style: solid;
+  border-color: rgb(226, 222, 222);
+}
+
+.description_box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.outfit_header {
+  text-align: center;
 }
