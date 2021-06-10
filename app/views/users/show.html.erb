@@ -1,5 +1,5 @@
-<div>
-  <div class="top-bar">
+<div class='user-show-page'>
+  <div class="top-bar mt-2">
     <%= image_tag @user.avatar.attached? ? @user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
     <div>
       <div class="user-info">
@@ -7,8 +7,10 @@
         <p><%= current_user.outfits.length %> outfits completed</p>
       </div>
     </div>
-    <div class="btn-group dropleft dropdown-options">
-      <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+    <div class="btn-group dropleft dropdown-options mt-2 mr-1">
+      <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= image_tag 'settings.png' %>
+      </a>
       <div class="dropdown-menu">
         <%= link_to "Edit profile", edit_user_registration_path, class:'edit-user' %>
         <%= link_to "Log out", destroy_user_session_path, class:'logout', method: :delete %>
@@ -17,18 +19,18 @@
   </div>
   <div class="fcen">
     <div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      UPLOAD OUTFIT
+      UPLOAD NEWOUTFIT
     </div>
   </div>
   <div class="border-top">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item col-6">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-        <h5 class="completed-look">Completed Looks</h5></a>
+        <%= image_tag 'history.png' %></a>
       </li>
       <li class="nav-item col-6">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-        <h5 class="wishlist">Wishlist</h5></a>
+        <%= image_tag 'heart.png' %></a>
         <!-- wishlist - only auto generated in next project phase - atm placeholder -->
       </li>
     </ul>
@@ -36,21 +38,22 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class='user-cards'>
-        <div class="col-4 p-2">
-          <% current_user.outfits.each do |outfit| %>
-            <%= link_to outfit_path(outfit), class:'show-link' do %>
-          <div class="outfit-photo" style="background-image: url('<%= @outfit.photo.attached? ? cl_image_path(@outfit.photo.key) : "" %>')">
-            <% end %>
+      <div class='container pbbig'>
+        <% current_user.outfits.each do |outfit| %>
+        <%= link_to outfit_path(outfit), class:'show-link' do %>
+        <div class='outfit-index-card'>
+          <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+          </div>
         </div>
+        <% end %>
         <% end %>
       </div>
     </div>
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Wishlist</div>
+
   </div>
-<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
-
 </div>
-
 
 <!-- modal -->
 
