@@ -1,59 +1,49 @@
-
-<div class="container d-flex justify-content-between p-4">
-  <div class="row">
-    <div class="col-9">
-      <div class="">
-        <% if @outfit.photo.attached? %>
-          <%= cl_image_tag @outfit.photo.key, height: 350, width: 200, crop: :fill %>
-        <% end %>
-        <div class="outfit_description">
-          <%= @outfit.user.username %>
-          <%= @outfit.event_date %>
-          <%= @outfit.event_type %>
-          <%#= @outfit.walking_time.humanize %>
-          <div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<div class="whole_outfit_container">
+  <div class="outfit_header">
+    <h2>My Outfit</h2>
+    <p>Upload up to 3 Shoe images here</p>
+  </div>
+  <%# card to display outfit pic %>
+  <div class="container d-flex justify-content-between p-2">
+    <div class="outfit-photo" style="background-image: url('<%= @outfit.photo.attached? ? cl_image_path(@outfit.photo.key) : "" %>')">
+      <div class="btn-group dropleft dropdown-options">
+        <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown-menu">
+          <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+          <div data-toggle="modal" data-target="#exampleModal">
               Edit Outfit
           </div>
-          <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
       </div>
-    </div>
-  </div>
 
-    <%# card to display shoe pic %>
-    <div class="sm-4 col-sm-4">
-      <div class="card">
-        <div class="fcen">
-          <div class="btn btn-primary" data-toggle="modal" data-target="#newshoeModal">
-            Upload Shoes
+
+    </div>
+
+      <%# card to display shoe pic %>
+    <div class="f-col">
+      <% @shoes.first(3).each do |shoe| %>
+        <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
+          <div class="btn-group dropleft dropdown-options">
+            <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu">
+              <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
+              <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+            </div>
           </div>
         </div>
-        <div class="col-3">
-          <% @shoes.each do |shoe| %>
-            <span id="shoe-<%= shoe.id %>">
-              <!-- #like button starts -->
-              <span>
-                <%= shoe.votes_for.count%>
-              </span>
-              <% if current_user.liked? shoe %>
-                <%= link_to like_shoe_path(shoe, "unlike"), method: :put, remote: :true do  %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to like_shoe_path(shoe, "like"), method: :put, remote: :true do  %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-              <% end %>
-            </span>
-              <% if shoe.photo.attached? %>
-                <%= cl_image_tag shoe.photo.key, height: 100, width: 100, crop: :fill %>
-              <% end %>
-            <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-            <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
-          <% end %>
+      <% end %>
+      <% length = 3 - @shoes.length %>
+      <% length.times do  %>
+        <div class="add-shoe-div" data-toggle="modal" data-target="#newshoeModal">
+          <h1>+</h1>
         </div>
-      </div>
+      <% end %>
     </div>
+  </div>
+  <div class="description_box">
+    <p>Event date: <%= @outfit.event_date.strftime("%a, %d %b %y, %l:%M %p") %></p>
+    <p>Event type: <%= @outfit.event_type.humanize %></p>
+    <p>Amount of walking: <%= @outfit.walking_time.humanize %></p>
   </div>
 </div>
 
@@ -62,7 +52,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New outfit</h5>
+        <h5 class="modal-title">Edit outfit</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

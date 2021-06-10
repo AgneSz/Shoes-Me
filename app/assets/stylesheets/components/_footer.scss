@@ -1,7 +1,6 @@
 footer {
   background-color: #E7C8C7;
-  padding: 8px;
-  // padding: 8px;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -25,4 +24,5 @@ footer img {
 }
 .min-h-100 {
   min-height: calc(100vh - 72px);
+  margin-bottom: 75px;
 }
