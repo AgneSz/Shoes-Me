@@ -7,16 +7,20 @@
       <% end %>
       </li>
       <li>
-        <%= link_to "outfits" do %>
-        <%= image_tag 'social-media.png' %>
+        <%= link_to "/" do %>
+          <%= image_tag 'photo.png' %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to outfits_path do %>
+          <%= image_tag 'social-media.png' %>
         <% end %>
       </li>
       <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <%= image_tag current_user.avatar.attached? ? current_user.avatar : "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-          </div>
+        <li>
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag current_user.avatar.attached? ? current_user.avatar : "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown" %>
+            <% end %>
         </li>
       <% else %>
         <li class="nav-item">
