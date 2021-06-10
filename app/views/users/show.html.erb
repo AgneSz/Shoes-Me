@@ -34,7 +34,7 @@
   </div>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <div class="row">
+
         <div class="user-cards">
         <% current_user.outfits.each do |outfit| %>
           <%= link_to outfit_path(outfit), class:'show-link' do %>
@@ -42,7 +42,7 @@
           <% end %>
         <% end %>
         </div>
-      </div>
+
     </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
 
