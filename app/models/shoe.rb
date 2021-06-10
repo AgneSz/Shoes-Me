@@ -9,4 +9,5 @@ class Shoe < ApplicationRecord
 
   #shoes are voted on by user:
   acts_as_votable
+
 end
