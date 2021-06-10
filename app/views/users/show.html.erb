@@ -36,16 +36,18 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-        <div class="user-cards">
-        <% current_user.outfits.each do |outfit| %>
-          <%= link_to outfit_path(outfit), class:'show-link' do %>
-            <%= render "shared/outfit", outfit: outfit %>
-          <% end %>
-        <% end %>
+      <div class='user-cards'>
+        <div class="col-4 p-2">
+          <% current_user.outfits.each do |outfit| %>
+            <%= link_to outfit_path(outfit), class:'show-link' do %>
+          <div class="outfit-photo" style="background-image: url('<%= @outfit.photo.attached? ? cl_image_path(@outfit.photo.key) : "" %>')">
+            <% end %>
         </div>
-
+        <% end %>
+      </div>
     </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
+  </div>
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
 
 </div>
 
