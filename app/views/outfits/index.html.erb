@@ -1,35 +1,17 @@
-  <div class="whole_outfit_container">
-    <div class="profile row align-items-center mt-4 ml-5">
-      <h2><%= cl_image_tag current_user.avatar.key, class: "avatar" %></h2>
-    </div>
-      <!-- OUTFIT PART -->
-    <div class="container d-flex justify-content-between p-2">
-      <% @outfits.each do |outfit| %>
-        <div class='card'>
-          <div class="col-9">
-            <div class="outfit-image-card">
-              <% if outfit.photo.attached? %>
-                <%= cl_image_tag outfit.photo.key, class:'outfit-index-cards', crop: :fill %>
-              <% end %>
-              <div class="card-body"><%= outfit.brand %></div>
-            </div>
-          </div>
-        </div>
-
-              <!-- SHOES PART -->
-
-        <div class="f-col">
-          <div class="shoe-div">
-              <!-- <div class="card"> -->
-                <!-- <div class="class"></div> -->
-            <% outfit.shoes.each do |shoe| %>
-              <% if shoe.photo.attached? %>
-                <div>
-                  <%= cl_image_tag shoe.photo.key, height: 100, width: 100, crop: :fill %>
-                </div>
-              <% end %>
+<div class="container pbbig">
+  <div class="profile row align-items-center mt-4 ml-5">
+    <h2><%= cl_image_tag current_user.avatar.key, class: "avatar" %></h2>
+  </div>
+    <!-- OUTFIT PART -->
+  <% @outfits.each do |outfit| %>
+    <div class='outfit-index-card'>
+      <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+      </div>
+      <div class="f-col">
+        <% outfit.shoes.each do |shoe| %>
+          <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
+            <div class="tl">
               <span id="shoe-<%= shoe.id %>">
-                  <!-- #like button starts -->
                 <%= shoe.get_likes.count%>
               </span>
               <% if current_user.liked? shoe %>
@@ -43,13 +25,12 @@
               <% else %>
                <i class="far fa-heart"></i>
               <% end %>
-              <!-- </div> -->
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 
