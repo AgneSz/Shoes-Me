@@ -39,7 +39,12 @@ class ShoesController < ApplicationController
     elsif params[:format] == "unlike"
       @shoe.unliked_by current_user
     end
-    redirect_to outfit_path(@outfit, anchor: "shoe-#{@shoe.id}")
+
+    if params[:from] == "index"
+      redirect_to outfits_path(anchor: "shoe-#{@shoe.id}")
+    else
+      redirect_to outfit_path(@outfit, anchor: "shoe-#{@shoe.id}")
+    end
   end
 
   private
