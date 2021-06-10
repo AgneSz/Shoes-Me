@@ -2,7 +2,7 @@ class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @outfits = Outfit.all # checked!
+    @outfits = Outfit.all.order(created_at: :desc) # checked!
   end
 
   def show
