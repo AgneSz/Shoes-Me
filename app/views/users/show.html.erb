@@ -23,11 +23,11 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item col-6">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-        <h2 class="completed-look">Completed Looks</h2></a>
+        <h4 class="completed-look">Completed Looks</h4></a>
       </li>
       <li class="nav-item col-6">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-        <h2 class="wishlist">Wishlist</h2></a>
+        <h4 class="wishlist">Wishlist</h4></a>
         <!-- wishlist - only auto generated in next project phase - atm placeholder -->
       </li>
     </ul>
@@ -48,7 +48,7 @@
 
 </div>
 
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "blue-btn" %>
 </div>
 
 <!-- modal -->

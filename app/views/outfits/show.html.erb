@@ -16,10 +16,9 @@
           </div>
           <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
-      </div>     
+      </div>
     </div>
   </div>
-
 
     <%# card to display shoe pic %>
     <div class="sm-4 col-sm-4">
@@ -45,7 +44,7 @@
                   <i class="far fa-heart"></i>
                 <% end %>
               <% end %>
-            </span> 
+            </span>
               <% if shoe.photo.attached? %>
                 <%= cl_image_tag shoe.photo.key, height: 100, width: 100, crop: :fill %>
               <% end %>
