@@ -1,41 +1,46 @@
-
-<div class="container d-flex justify-content-between p-2">
-  <div class="outfit-photo" style="background-image: url('<%= @outfit.photo.attached? ? cl_image_path(@outfit.photo.key) : "" %>')">
-    <div class="btn-group dropleft dropdown-options">
-      <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-      <div class="dropdown-menu">
-        <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
-        <div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Edit Outfit
-        </div>
-      </div>
-    </div>
-
+<div class="whole_outfit_container">
+  <div class="outfit_header">
+    <h2>My Outfit</h2>
   </div>
-
-
-    <%# card to display shoe pic %>
-  <div class="f-col">
-    <% @shoes.first(3).each do |shoe| %>
-      <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
-
-
-        <div class="btn-group dropleft dropdown-options">
-          <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-          <div class="dropdown-menu">
-            <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-            <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+  <%# card to display outfit pic %>
+  <div class="container d-flex justify-content-between p-2">
+    <div class="outfit-photo" style="background-image: url('<%= @outfit.photo.attached? ? cl_image_path(@outfit.photo.key) : "" %>')">
+      <div class="btn-group dropleft dropdown-options">
+        <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown-menu">
+          <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+          <div data-toggle="modal" data-target="#exampleModal">
+              Edit Outfit
           </div>
         </div>
+      </div>
 
-      </div>
-    <% end %>
-    <% length = 3 - @shoes.length %>
-    <% length.times do  %>
-      <div class="add-shoe-div" data-toggle="modal" data-target="#newshoeModal">
-        <h1>+</h1>
-      </div>
-    <% end %>
+    </div>
+
+
+      <%# card to display shoe pic %>
+    <div class="f-col">
+      <% @shoes.first(3).each do |shoe| %>
+        <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
+          <div class="btn-group dropleft dropdown-options">
+            <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu">
+              <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
+              <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% length = 3 - @shoes.length %>
+      <% length.times do  %>
+        <div class="add-shoe-div" data-toggle="modal" data-target="#newshoeModal">
+          <h1>+</h1>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="description_box">
+    <h2>This is where description stuff goes</h2>
   </div>
 </div>
 
@@ -44,7 +49,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New outfit</h5>
+        <h5 class="modal-title">Edit outfit</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
