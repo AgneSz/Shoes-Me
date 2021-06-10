@@ -29,7 +29,8 @@
                       input_html: { autocomplete: "new-password" },
                       placeholder: "Password confirmation",
                       label: false %>
-          <%= f.input :avatar, as: :file %>
+          <%= f.input :avatar, as: :file,
+                      label: "Upload your profile image:" %>
         </div>
 
         <div class="form-actions">

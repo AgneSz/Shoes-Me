@@ -9,14 +9,12 @@
       <div class="btn-group dropleft dropdown-options">
         <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu">
-          <%= link_to "bin outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Delete Outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
           <div data-toggle="modal" data-target="#exampleModal">
               Edit Outfit
           </div>
         </div>
       </div>
-
-
     </div>
 
       <%# card to display shoe pic %>
@@ -41,7 +39,7 @@
     </div>
   </div>
   <div class="description_box">
-    <p>Event date: <%= @outfit.event_date.strftime("%a, %d %b %y, %l:%M %p") %></p>
+    <p>Event date: <%= @outfit.event_date.strftime("%a %d %b %y, %l:%M %p") %></p>
     <p>Event type: <%= @outfit.event_type.humanize %></p>
     <p>Amount of walking: <%= @outfit.walking_time.humanize %></p>
   </div>
