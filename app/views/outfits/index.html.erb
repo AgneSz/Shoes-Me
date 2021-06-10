@@ -1,51 +1,36 @@
-  <div class="d-flex">
-    <div class="center-panel">
-      <div class="container">
-        <div class="row justify-content-center">
-          <% @outfits.each do |outfit| %>
-            <div class='card'>
-              <div class="col-9">
-                <div class="outfit-image-card">
-                  <% if outfit.photo.attached? %>
-                    <%= cl_image_tag outfit.photo.key, class:'outfit-index-cards', crop: :fill %>
-                  <% end %>
-                  <div class="card-body"><%= outfit.brand %></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-3">
-              <!-- <div class="card"> -->
-                <!-- <div class="class"></div> -->
-                <% outfit.shoes.each do |shoe| %>
-                  <% if shoe.photo.attached? %>
-                    <div>
-                      <%= cl_image_tag shoe.photo, height: 100, width: 100, crop: :fill %>
-                    </div>
-                    <span id="shoe-<%= shoe.id %>">
-                      <!-- #like button starts -->
-                      <span>
-                        <%= shoe.votes_for.count%>
-                      </span>
-                         <% if current_user.liked? shoe %>
-                        <%= link_to like_shoe_path(shoe, "unlike"), method: :put, remote: :true do  %>
-                          <i class="fas fa-heart"></i>
-                        <% end %>
-                        <% else %>
-                        <% if ((Time.now - shoe.created_at) <= 10) %>
-                        <%= link_to like_shoe_path(shoe, "like"), method: :put, remote: :true do  %>
-                          <i class="far fa-heart"></i>
-                        <% end %>
-                        <% end %>
-                      <% end %>
-                    </span>
-                <!-- </div> -->
-              </div>
-            </div>
-          <% end %>
-        </div>
-    </div>
+<div class="container pbbig">
+  <div class="profile row align-items-center mt-4 ml-5">
+    <h2><%= cl_image_tag current_user.avatar.key, class: "avatar" %></h2>
   </div>
-
-
+    <!-- OUTFIT PART -->
+  <% @outfits.each do |outfit| %>
+    <div class='outfit-index-card'>
+      <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+      </div>
+      <div class="f-col">
+        <% outfit.shoes.each do |shoe| %>
+          <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
+            <div class="tl">
+              <span id="shoe-<%= shoe.id %>">
+                <%= shoe.get_likes.count%>
+              </span>
+              <% if current_user.liked? shoe %>
+                <%= link_to like_shoe_path(shoe, "unlike", from: "index"), method: :put, remote: :true do  %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              <% elsif ((Time.now - shoe.created_at)/3600 <= 15) %>
+                <%= link_to like_shoe_path(shoe, "like", from: "index"), method: :put, remote: :true do  %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              <% else %>
+               <i class="far fa-heart"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 

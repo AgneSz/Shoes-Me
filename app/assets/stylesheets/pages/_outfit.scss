@@ -9,6 +9,9 @@
   border-style: solid;
   border-color: rgb(226, 222, 222);
 }
+.h100 {
+  height: 100%;
+}
 .shoe-div {
   background-size: cover;
   background-position: center;
@@ -19,7 +22,7 @@
   border-radius: 8px;
   box-shadow: 0 3 4 rgba(0,0,0,0.4);
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
   border-radius: 8px;
 }
 .f-col {
@@ -28,6 +31,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+.pbbig {
+  padding-bottom: 80px;
 }
 .add-shoe-div {
   width: 100%;
@@ -90,3 +96,37 @@
 .fa-ellipsis-v {
   color: grey;
 }
+
+.outfit-index-card {
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: calc(100vw - 8px);
+  margin-bottom: 12px;
+}
+.tl {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

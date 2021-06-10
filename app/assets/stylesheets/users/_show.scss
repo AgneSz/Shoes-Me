@@ -22,18 +22,6 @@
 .btn {
   border-radius: 8px;
 }
-.pink-bar {
-  padding: 12px;
-  // border-radius: 8px;
-  background-color: $pink;
-  color: white;
-  // width: 60%;
-  margin-left: 3px;
-  a {
-    background-color: $pink;
-  text-decoration: none;
-  }
-}
 
 .outfit {
   position: relative;
@@ -59,5 +47,7 @@
 }
 
 .user-cards {
+  display: block;
+  text-align: center;
 
 }
