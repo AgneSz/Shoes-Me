@@ -12,14 +12,14 @@
                 as: :select,
                 label_method: :humanize %>
     <%= f.association :categories,
-                as: :radio_buttons,
+                as: :check_boxes,
                 item_wrapper_class: 'category-item',
                 input_html: {class: 'category-selector'},
                 collection: Category.where(shoe:false).last(8),
                 label:"Outfit Style:",
                 label_method: lambda { |category| category.name.humanize} %>
     <%= f.association :categories,
-                as: :radio_buttons,
+                as: :check_boxes,
                 item_wrapper_class: 'category-item',
                 input_html: {class: 'category-selector'},
                 collection: Category.where(shoe:false).first(16),
@@ -27,6 +27,7 @@
                 label_method: lambda { |category| category.name.humanize} %>
 
     <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+    <%= f.button :submit, "Submit" %>
 
     <% if outfit.new_record? %>
       <%= f.submit "Upload your outfit!", class: "blue-btn" %>

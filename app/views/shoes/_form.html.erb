@@ -24,8 +24,8 @@
       label:"Colour:",
       label_method: lambda { |category| category.name.humanize} %>
 
-    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.input :photo, as: :file, input_html: { class: "", id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+    <%#= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+    <%= f.input :photo, as: :file %>
 
     <% if @shoe.new_record? %>
       <%= f.submit "Create your shoes!", class: "blue-btn" %>
