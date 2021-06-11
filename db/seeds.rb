@@ -14,20 +14,30 @@ OutfitCategory.destroy_all
 ShoeCategory.destroy_all
 Category.destroy_all
 
-puts 'seed the user owner with owner@test.com and password 123456 '
-user = User.create(email: "owner@test.com", password: "123456")
+usernames = ["Radha1307", "chloeblc", "BastienMatis", "AgneSz", "Haumer"]
+
+puts 'seed the users '
+usernames.each do |username|
+  user = User.create!(
+    email: "#{username}@gmail.com",
+    password: "123456"
+  )
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/#{username}")
+  user.avatar.attach(io: file, filename: "#{username}.jpg", content_type: 'image/jpg')
+  user.save!
+end
 
 i = 0
-photos = ["https://li0.rightinthebox.com/images/x/201906/nrcr1559558239744.jpg","https://img.ltwebstatic.com/images3_pi/2020/08/20/1597906168b17a956b4736ce928d9bfc5b46aebde0_thumbnail_600x.webp","https://media.theeverygirl.com/wp-content/uploads/2019/10/fall-outfits-f.jpeg"]
+photos = ["cute_summer_dress.jpg","all_beige_outfit.jpg", "beige_floral_dress.jpg"]
 puts 'seeding outfits...'
 3.times do
   outfit = Outfit.new(
-    user_id: user.id,
-    brand: %w[Topshop Zara H&M].sample,
+    user: User.all.sample,
+    event_date: (Date.today..(Date.today + 1.year)).to_a.sample + (10..22).to_a.sample.hours,
     event_type: %w[wedding_or_bridal business cocktail_party ball_or_prom party night_out formal_event casual_event date outdoor_event].sample,
     walking_time: %w[under_one_hour up_to_5_hours more_than_5_hours].sample
   )
-    file = URI.open(photos[i])
+    file =  File.open(Rails.root.join("app","assets","images", photos[i]))
     outfit.photo.attach(io: file, filename: "outfit.png", content_type: 'image/png')
   outfit.save!
   i += 1
@@ -49,4 +59,4 @@ names.each do |name|
 end
 puts 'seeding shoe categories complete'
 
-outfit = Outfit.new(brand: "topshop", event_type: "date", walking_time: "under one hour")
+
