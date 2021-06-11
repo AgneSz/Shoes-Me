@@ -3,11 +3,13 @@ class OutfitsController < ApplicationController
 
   def index
     @outfits = Outfit.all.order(created_at: :desc) # checked!
+    @new_outfit = Outfit.new
   end
 
   def show
     @shoe = Shoe.new
     @shoes = @outfit.shoes
+    @new_outfit = Outfit.new()
   end
 
   def new

@@ -9,10 +9,12 @@
   </div>
   <div class="home-bottom">
     <div class="home-call">
-      <%= link_to "/" do %>
-        <%= image_tag 'photo.png' %>
+      <% if user_signed_in? %>
+        <div data-toggle="modal" data-target="#outfitModal">
+          <%= image_tag 'photo.png' %>
+        </div>
       <% end %>
-      <h3>Upload Photo</h3>
+      <h3>Upload New Outfit</h3>
       <br>
       <br>
       <%= link_to outfits_path do %>
@@ -57,18 +59,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
