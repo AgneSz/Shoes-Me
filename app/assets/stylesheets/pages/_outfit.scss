@@ -114,7 +114,14 @@
   left: 5px;
 }
 
+.showlinks {
+  text-decoration: none !important;
+  color: grey !important;
+}
 
+.showlinks :hover {
+  color: rgb(68, 62, 62) !important;
+}
 
 
 
