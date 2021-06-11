@@ -7,7 +7,14 @@
           <h2><%= cl_image_tag current_user.avatar.key, class: "avatar" %></h2>
         </div>
         <div class="d-flex">
-          <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+          <div class="d-flex flex-column outfit-photo-2">
+            <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+            </div>
+            <div class="description_box">
+              <p>Event date: <%= outfit.event_date&.strftime("%a %d %b %y, %l:%M %p") || "has not been set" %></p>
+              <p>Event type: <%= outfit.event_type&.humanize  || "has not been set" %></p>
+              <p>Amount of walking: <%= outfit.walking_time&.humanize || "0" %></p>
+            </div>
           </div>
           <div class="f-col">
             <% outfit.shoes.each do |shoe| %>
