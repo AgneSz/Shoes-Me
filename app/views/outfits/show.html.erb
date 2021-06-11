@@ -9,7 +9,7 @@
       <div class="btn-group dropleft dropdown-options">
         <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu">
-          <%= link_to "Delete Outfit", outfit_path(@outfit), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Delete Outfit", outfit_path(@outfit), class: "showlinks", method: :delete, data: { confirm: "Are you sure?" } %>
           <div data-toggle="modal" data-target="#exampleModal">
               Edit Outfit
           </div>
@@ -24,8 +24,8 @@
           <div class="btn-group dropleft dropdown-options">
             <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu">
-              <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe) %>
-              <%= link_to "Delete your shoes", shoe_path(shoe), method: :delete, data: { confirm: "Are you sure?" }%>
+              <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe), class: "showlinks" %>
+              <%= link_to "Delete your shoes", shoe_path(shoe), class: "showlinks", method: :delete, data: { confirm: "Are you sure?" }%>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
   <%= link_to "Time to Vote!", outfits_path, class:"blue-btn" %>
 </div>
 <!-- Modal to edit outfit -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade showlinks" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -67,7 +67,7 @@
 </div>
 
 <!-- Modal to Upload Shoes -->
-<div class="modal fade" id="newshoeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade showlinks" id="newshoeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

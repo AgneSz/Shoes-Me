@@ -56,3 +56,8 @@
   display: block;
   text-align: center;
 }
+
+.nav-tabs {
+  display: flex;
+  justify-content: space-between;
+}
