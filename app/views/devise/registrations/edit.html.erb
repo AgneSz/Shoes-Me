@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="edit-login col-6">
+    <div class="col-8">
       <h2>Edit Your Profile</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -29,14 +29,13 @@
                         placeholder: "Password_confirmation",
                         label: false %>
 
-            <%= f.input :avatar, as: :file,
-                        label: "Upload your new profile image:" %>
             <%= f.input :current_password,
                         hint: "we need your current password to confirm your changes",
                         required: true,
                         input_html: { autocomplete: "current-password" },
                         placeholder: "Current_password",
                         label: false %>
+            <%= f.input :avatar, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a profile picture' %>
       </div>
 
       <div class="form-actions">
