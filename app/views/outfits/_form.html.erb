@@ -1,4 +1,6 @@
 <div class="margin-container">
+  raise
+  <% outfit = Outfit.new if devise_controller? %>
   <%= simple_form_for [ user, outfit ] do |f| %>
     <%= f.input :event_type,
                 collection: Outfit::EVENT_TYPES,
