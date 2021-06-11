@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   #we will not edit/update/destroy users
 
   def show
-    @outfit = Outfit.new
+    @new_outfit = Outfit.new
     @shoe = Shoe.new
     @user = User.find(params[:id])
   end

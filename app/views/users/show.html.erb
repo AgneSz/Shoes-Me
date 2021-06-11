@@ -42,12 +42,12 @@
 
       <div class='container pbbig'>
         <% current_user.outfits.each do |outfit| %>
-        <%= link_to outfit_path(outfit), class:'show-link' do %>
-        <div class='outfit-index-card'>
-          <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+          <%= link_to outfit_path(outfit), class:'show-link' do %>
+          <div class='outfit-index-card'>
+            <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+            </div>
           </div>
-        </div>
-        <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -69,7 +69,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <%= render "outfits/form", outfit: @outfit, user: @user %>
+          <%= render "outfits/form", outfit: @new_outfit, user: current_user %>
       </div>
     </div>
   </div>
