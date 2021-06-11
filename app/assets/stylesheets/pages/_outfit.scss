@@ -114,8 +114,31 @@
   left: 5px;
 }
 
+.outfit-index-card-2 {
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  // display: flex;
+  // align-items: flex-start;
+  // justify-content: space-between;
+  // height: calc(100vw - 8px);
+  margin-bottom: 12px;
+}
 
+.outfit-photo-2{
+  height: 60vh;
+  width: 60vw;
+}
 
+.showlinks {
+  text-decoration: none !important;
+  color: grey !important;
+}
+
+.showlinks :hover {
+  color: rgb(68, 62, 62) !important;
+}
 
 
 
