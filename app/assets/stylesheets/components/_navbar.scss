@@ -10,3 +10,29 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar1 {
+  padding: 16px;
+  color: white;
+  background-color: black;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  img {
+  width: 30px;
+  height: 30px;
+  }
+}
+
+.nav-font {
+  font-family: 'Anton', sans-serif;
+}
+
+.nav-middle {
+  justify-content: space-between;
+}
+
+// .user-setting {
+//   position: relative;
+// }
