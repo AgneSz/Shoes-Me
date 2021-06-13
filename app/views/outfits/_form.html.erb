@@ -30,7 +30,7 @@
     <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
 
     <% if outfit.new_record? %>
-      <%= f.submit "Upload your outfit!", class: "blue-btn" %>
+      <%= f.submit "Upload your outfit!", class: "blue-btn special" %>
     <% else %>
       <%= f.submit "Edit your outfit!", class: "btn btn-warning" %>
     <% end %>

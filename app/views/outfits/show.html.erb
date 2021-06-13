@@ -9,10 +9,10 @@
       <div class="btn-group dropleft dropdown-options">
         <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu">
-          <%= link_to "Delete Outfit", outfit_path(@outfit), class: "showlinks", method: :delete, data: { confirm: "Are you sure?" } %>
           <div data-toggle="modal" data-target="#exampleModal">
-              Edit Outfit
+              <p class='edit-user'>Edit Outfit</p>
           </div>
+          <%= link_to "Delete Outfit", outfit_path(@outfit), class:'logout', method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
 
 <!-- Link to vote on the index page -->
 <div class="container d-flex justify-content-center">
-  <%= link_to "Time to Vote!", outfits_path, class:"blue-btn" %>
+  <%= link_to "Time to Vote!", outfits_path, class:"blue-btn special" %>
 </div>
 <!-- Modal to edit outfit -->
 <div class="modal fade showlinks" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
