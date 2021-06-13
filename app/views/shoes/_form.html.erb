@@ -28,9 +28,9 @@
     <%= f.input :photo, as: :file %>
 
     <% if @shoe.new_record? %>
-      <%= f.submit "Create your shoes!", class: "blue-btn" %>
+      <%= f.submit "Create your shoes!", class: "blue-btn special" %>
     <% else %>
-      <%= f.submit "Edit your shoes!", class: "btn btn-warning" %>
+      <%= f.submit "Edit your shoes!", class: "blue-btn special" %>
     <% end %>
   <% end %>
 </div>
