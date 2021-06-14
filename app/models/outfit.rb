@@ -3,7 +3,7 @@ class Outfit < ApplicationRecord
   WALKING_TIME = %w[under_one_hour up_to_5_hours more_than_5_hours]
   belongs_to :user
   has_many :shoes, dependent: :destroy
-  has_many :feedbacks, through: :shoes
+  has_many :feedbacks
   has_many :outfit_categories, dependent: :destroy
   has_many :categories, through: :outfit_categories
   has_one_attached :photo

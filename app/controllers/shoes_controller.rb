@@ -34,6 +34,9 @@ class ShoesController < ApplicationController
 
   def like
     @outfit = @shoe.outfit
+    @outfit.shoes.each do |shoe|
+      shoe.unliked_by current_user
+    end
     if params[:format] == "like"
       @shoe.liked_by current_user
     elsif params[:format] == "unlike"
