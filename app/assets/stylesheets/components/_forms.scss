@@ -10,7 +10,7 @@
 .category-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 18px;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: white;
@@ -30,3 +30,4 @@
 .category-selector + label:nth-element(3) {
   background: red;
 }
+

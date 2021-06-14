@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       put "like" => "shoes#like"
     end
     resources :feedback, only: [:create, :update]
+    resources :wishes, only: :create
   end
 
   resources :feedback, only: [:destroy]

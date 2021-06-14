@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :outfits
   has_many :feedbacks
+  has_many :wishes
   has_one_attached :avatar
 
   acts_as_voter
