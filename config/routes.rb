@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :wishes, only: :create
   end
 
-  resources :feedback, only: [:destroy]
+  resources :feedbacks, only: [:destroy]
   resources :users, only: [:show] do
     resources :outfits, only: [:create]
   end
