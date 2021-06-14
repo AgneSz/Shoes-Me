@@ -41,6 +41,8 @@
           <h1>+</h1>
         </div>
       <% end %>
+      <div class="shoe-div reco-shoe" style="background-image: url('<%= @recommended_shoe.photo.attached? ? cl_image_path(@recommended_shoe.photo.key) : "" %>')">
+      </div>
     </div>
   </div>
   <div class="description_box">

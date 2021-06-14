@@ -7,25 +7,38 @@
       </button>
       </div>
   </div>
-  <div class="home-bottom">
-    <div class="home-call">
-      <% if user_signed_in? %>
-        <div data-toggle="modal" data-target="#outfitModal">
-          <%= image_tag 'photo.png' %>
+  <div class="home-call py-4 border-top border-bottom mx-3 mb-3">
+    <% if user_signed_in? %>
+      <div class='blue-btn special home-btn' data-toggle="modal" data-target="#outfitModal">
+        UPLOAD NEW OUTFIT
+      </div>
+    <% end %>
+    <br>
+    <%= link_to 'TAKE ME TO THE FEED', outfits_path, class: 'logout home-btn text-decoration-none'  %>
+  </div class='container pbbig mt-5'>
+    <h5 class='home-trend'>Our trends <%= image_tag 'flame.png', class: 'home-icon'%></h5>
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="https://footwearnews.com/wp-content/uploads/2018/10/rexfeatures_9065733ar.jpg?w=700&h=437&crop=1" class="d-block w-100" alt="...">
         </div>
-      <% end %>
-      <h3>Upload New Outfit</h3>
-      <br>
-      <br>
-      <%= link_to outfits_path do %>
-        <%= image_tag 'feed.png' %>
-      <% end %>
-      <h3>Vote</h3>
-      <br>
-      <br>
-      <p>Need help picking the right pair? We'll help you choose a new pair or our users will cast their votes on yours!</p>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fhips.hearstapps.com%2Fhmg-prod.s3.amazonaws.com%2Fimages%2Fshoes-getty-gustaffson-getty-rochas-2-1600975281.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fhips.hearstapps.com%2Fhmg-prod.s3.amazonaws.com%2Fimages%2Fshoes-getty-gustaffson-getty-rochas-2-1600975281.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </div>
 </div>
 
 <!-- modal2 -->

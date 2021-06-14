@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_101329) do
     t.bigint "outfit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
     t.index ["outfit_id"], name: "index_shoes_on_outfit_id"
   end
 
