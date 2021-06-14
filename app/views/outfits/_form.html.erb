@@ -29,7 +29,6 @@
                 label_method: lambda { |category| category.name.humanize} %>
 
     <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-    <%= f.button :submit, "Submit" %>
 
     <% if outfit.new_record? %>
       <%= f.submit "Upload your outfit!", class: "blue-btn" %>
