@@ -3,11 +3,11 @@
     <ul>
     <% if current_page?('/') %>
       <li class='current-path'>
-        <%= link_to "/" do %>
+        <%= link_to root_path do %>
           <%= image_tag 'home.png' %>
         <% end %>
     <% else %>
-        <%= link_to "/" do %>
+        <%= link_to root_path do %>
           <%= image_tag 'home.png', class:'other-path' %>
         <% end %>
     <% end %>
