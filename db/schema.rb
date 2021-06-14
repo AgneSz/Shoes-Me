@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_102201) do
+ActiveRecord::Schema.define(version: 2021_06_14_101329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_102201) do
     t.bigint "outfit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
     t.index ["outfit_id"], name: "index_shoes_on_outfit_id"
   end
 
@@ -120,6 +121,15 @@ ActiveRecord::Schema.define(version: 2021_06_09_102201) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  create_table "wishes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shoe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shoe_id"], name: "index_wishes_on_shoe_id"
+    t.index ["user_id"], name: "index_wishes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "feedbacks", "shoes"
   add_foreign_key "feedbacks", "users"
@@ -129,4 +139,6 @@ ActiveRecord::Schema.define(version: 2021_06_09_102201) do
   add_foreign_key "shoe_categories", "categories"
   add_foreign_key "shoe_categories", "shoes"
   add_foreign_key "shoes", "outfits"
+  add_foreign_key "wishes", "shoes"
+  add_foreign_key "wishes", "users"
 end
