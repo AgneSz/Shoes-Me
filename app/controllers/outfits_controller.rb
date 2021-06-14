@@ -5,6 +5,7 @@ class OutfitsController < ApplicationController
     @outfits = Outfit.all.order(created_at: :desc) # checked!
     @new_outfit = Outfit.new
     @user = current_user
+    @feedback = Feedback.new
   end
 
   def show

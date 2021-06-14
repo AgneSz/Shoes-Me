@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :outfits, except: [:create] do
     resources :shoes, only: [:new, :create, :edit, :update]
+    resources :feedbacks, only: [:create, :update]
   end
 
   resources :shoes, only: [:destroy] do
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
     member do
       put "like" => "shoes#like"
     end
-    resources :feedback, only: [:create, :update]
   end
 
   resources :feedback, only: [:destroy]

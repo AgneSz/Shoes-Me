@@ -4,9 +4,9 @@
     <div class='outfit-index-card-2 mt-2'>
       <div class="d-flex flex-column">
         <div class="top-bar mb-2">
-          <%= image_tag @user.avatar.attached? ? @user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
+          <%= image_tag outfit.user.avatar.attached? ? outfit.user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
           <div class="user-info">
-            <h5>@<%= @user.username %></h5>
+            <h5><%= link_to "@#{outfit.user.username}", user_path(outfit.user) %></h5>
             <p><%= current_user.outfits.length %> outfits completed</p>
           </div>
         </div>
@@ -15,9 +15,25 @@
             <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
             </div>
             <div class="description_box">
-              <p>Event date: <%= outfit.event_date&.strftime("%a %d %b %y, %l:%M %p") || "has not been set" %></p>
-              <p>Event type: <%= outfit.event_type&.humanize  || "has not been set" %></p>
-              <p>Amount of walking: <%= outfit.walking_time&.humanize || "0" %></p>
+              <% if outfit.event_date && (outfit.event_date - Time.now)/3600 >= 2 %>
+                <p><i class="fas fa-history"></i> <%= ((outfit.event_date - Time.now)/3600).round %> hours left to vote</p>
+              <% else %>
+                <p>Votes are closed!</p>
+              <% end %>
+              <p><i class="fas fa-calendar-alt"></i> <%= outfit.event_type&.humanize  || "has not been set" %></p>
+              <p><i class="fas fa-walking"></i> <%= outfit.walking_time&.humanize || "0" %></p>
+              <p>
+               <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Comments
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                Comments
+                <%= simple_form_for [outfit, @feedback] do |f| %>
+                  <%= f.input :content, label: false %>
+                  <%= f.submit "Add a comment", class: "btn btn-primary" %>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="f-col">
@@ -28,10 +44,10 @@
                     <%= shoe.get_likes.count%>
                   </span>
                   <% if current_user.liked? shoe %>
-                    <%= link_to like_shoe_path(shoe, "unlike", from: "index"), method: :put, remote: :true do  %>
+                    <%= link_to like_shoe_path(shoe, "unlike", from: "index"), class: 'red-like', method: :put, remote: :true do  %>
                       <i class="fas fa-heart"></i>
                     <% end %>
-                  <% elsif ((Time.now - shoe.created_at)/3600 <= 15) %>
+                    <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
                     <%= link_to like_shoe_path(shoe, "like", from: "index"), method: :put, remote: :true do  %>
                       <i class="far fa-heart"></i>
                     <% end %>
