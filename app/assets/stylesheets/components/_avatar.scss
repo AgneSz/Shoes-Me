@@ -5,6 +5,16 @@
   min-height: 40px;
   border-radius: 50%;
 }
+
+.avatar-current-path {
+    width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px black
+}
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;

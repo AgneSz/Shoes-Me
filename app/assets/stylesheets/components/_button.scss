@@ -1,18 +1,10 @@
 .blue-btn {
-  background-color: #7979F1;
-  padding: 13px 20px;
-  opacity: 1;
-  color: white;
-  border-radius: 8px;
-  border: none;
+  background-color: white;
+  padding: 8px 20px;
+  color: black;
+  border: solid black;
 }
 
- .blue-btn:hover {
-  opacity: 0.9;
-  text-decoration: none;
-  color: white;
-  background-color: #7979F1;
- }
 
  .special {
     box-shadow: 4px 6px lightgrey;
@@ -22,13 +14,13 @@
   display: block;
   text-align: center;
   // border: solid;
-  background-color: #7979F1;
+  background-color: white;
   color: black;
   text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border: solid;
 
 }
 
@@ -36,11 +28,10 @@
 .logout {
   display: block;
   text-align: center;
-  border: solid;
   color: black;
   opacity: 0.5;
   text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
-  border-radius: 5px;
+  border: solid;
 }

@@ -1,7 +1,6 @@
 <div class="margin-container">
-  raise
   <% outfit = Outfit.new if devise_controller? %>
-  <%= simple_form_for [ user, outfit ] do |f| %>
+  <%= simple_form_for [ current_user, outfit ] do |f| %>
     <%= f.input :event_type,
                 collection: Outfit::EVENT_TYPES,
                 as: :select, label_method: :humanize %>
@@ -31,7 +30,7 @@
     <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
 
     <% if outfit.new_record? %>
-      <%= f.submit "Upload your outfit!", class: "blue-btn" %>
+      <%= f.submit "Upload your outfit!", class: "blue-btn special" %>
     <% else %>
       <%= f.submit "Edit your outfit!", class: "btn btn-warning" %>
     <% end %>

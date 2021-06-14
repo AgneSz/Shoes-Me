@@ -1,5 +1,5 @@
 footer {
-  background-color: #E7C8C7;
+  background-color: #f2d3bc;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -11,7 +11,7 @@ footer {
 
 footer ul {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   list-style: none;
   text-decoration: none;
   color: black;
@@ -26,4 +26,20 @@ footer img {
 .min-h-100 {
   min-height: calc(100vh - 72px);
   margin-bottom: 75px;
+}
+
+.current-path {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+}
+
+.other-path {
+  opacity: 0.55;
+}
+
+.login-footer {
+  text-decoration: none;
+  color: black;
+  // border: black;
 }

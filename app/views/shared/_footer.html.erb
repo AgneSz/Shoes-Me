@@ -1,32 +1,52 @@
 <footer>
   <div class="list-footer">
     <ul>
-      <li>
+    <% if current_page?('/') %>
+      <li class='current-path'>
         <%= link_to "/" do %>
-      <%= image_tag 'home.png' %>
+          <%= image_tag 'home.png' %>
+        <% end %>
+    <% else %>
+        <%= link_to "/" do %>
+          <%= image_tag 'home.png', class:'other-path' %>
+        <% end %>
+    <% end %>
+        </li>
+      <% if current_page?(outfits_path) %>
+        <li class='current-path'>
+          <%= link_to outfits_path do %>
+            <%= image_tag 'feed.png' %>
+          <% end %>
+      <% else %>
+          <%= link_to outfits_path do %>
+            <%= image_tag 'feed.png', class:'other-path' %>
+          <% end %>
       <% end %>
-      </li>
-      <li>
-        <% if user_signed_in? %>
-          <div data-toggle="modal" data-target="#outfitModal">
-            <%= image_tag 'photo.png' %>
-          </div>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to outfits_path do %>
-          <%= image_tag 'social-media.png' %>
-        <% end %>
-      </li>
-      <% if user_signed_in? %>
+        </li>
+        <li>
+          <% if user_signed_in? %>
+            <div data-toggle="modal" data-target="#outfitModal">
+              <%= image_tag 'plus.png', class:'other-path' %>
+            </div>
+          <% else user_signed_in? %>
+            <div data-toggle="modal" data-target="#outfitModal">
+              <%= image_tag 'plus.png', class:'current-path' %>
+            </div>
+          <% end %>
+        </li>
+      <% if user_signed_in? && !current_page?(user_path(current_user)) %>
         <li>
             <%= link_to user_path(current_user) do %>
               <%= image_tag current_user.avatar.attached? ? current_user.avatar : "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown" %>
             <% end %>
+      <% elsif user_signed_in? && current_page?(user_path(current_user)) %>
+        <%= link_to user_path(current_user) do %>
+              <%= image_tag current_user.avatar.attached? ? current_user.avatar : "user.png", class: "avatar-current-path dropdown-toggle", id: "navbarDropdown" %>
+            <% end %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link login-footer border border-dark" %>
         </li>
       <% end %>
     </ul>
@@ -34,15 +54,8 @@
 </footer>
 
 
-<% if user_signed_in? %>
-        <div class='blue-btn special' data-toggle="modal" data-target="#outfitModal">
-        UPLOAD NEW OUTFIT
-        </div>
-      <% end %>
-
-
 <!-- modal -->
-<% if user_signed_in? %>
+<% if user_signed_in? && @new_outfit %>
 <div class="modal fade" id="outfitModal" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
