@@ -11,9 +11,11 @@ class OutfitsController < ApplicationController
     @shoe = Shoe.new
     @shoes = @outfit.shoes
     @new_outfit = Outfit.new()
-    shoe_ids = @shoes.map(&:id)
-    category_names = @shoes.map(&:categories).flatten.map(&:name).uniq
-    @recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first
+    if @shoes
+      shoe_ids = @shoes.map(&:id)
+      category_names = @shoes.map(&:categories).flatten.map(&:name).uniq
+      @recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first
+    end
   end
 
   def new
