@@ -15,5 +15,6 @@ class WishListShoesController < ApplicationController
     else
       flash[:alert] = "Ooops, item not saved!"
       render :new
+    end
   end
 end

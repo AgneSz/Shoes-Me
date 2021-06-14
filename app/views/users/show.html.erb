@@ -29,11 +29,14 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class='container pbbig'>
+      <div class='container pbbig mt-2'>
         <% current_user.outfits.each do |outfit| %>
           <%= link_to outfit_path(outfit), class:'show-link' do %>
-          <div class='outfit-index-card'>
+          <div class='outfit-user-card'>
             <div class="outfit-photo h100" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+            </div>
+            <div>
+              <p class='outfit-user-time'>Event date: <%= outfit.event_date&.strftime("%a %d %b %y, %l:%M %p") || "has not been set" %></p>
             </div>
           </div>
           <% end %>
