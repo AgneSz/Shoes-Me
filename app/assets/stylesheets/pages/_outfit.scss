@@ -70,7 +70,8 @@
   box-shadow: 0 3 4 rgba(0,0,0,0.2);
   padding: 8px;
   margin: 10px;
-  margin-top: 4%;
+  margin-top: 2%;
+  margin-bottom: 1%;
   border-style: solid;
   border-color: rgb(226, 222, 222);
 }
@@ -78,15 +79,9 @@
 .description_box {
   background-color: white;
   border-radius: 8px;
-  padding: 4px;
   position: relative;
   p {
     margin: 0;
-  }
-  .avatar {
-    position: absolute;
-    right: 1px;
-    top: -16px;
   }
 }
 
@@ -146,6 +141,14 @@
   border-width: 2px;
 }
 
+.p-showpage {
+  margin-top: 0;
+  margin-bottom: -0.5px;
+}
+
+.h-showpage {
+  margin-bottom: -0.45rem;
+}
 
 
 
