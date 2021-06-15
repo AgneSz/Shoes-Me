@@ -1,7 +1,7 @@
 <div class="whole_outfit_container">
   <div class="outfit_header">
-    <h2>My Outfit</h2>
-    <p>Upload up to 3 Shoe images here</p>
+    <h2 class="h-showpage">My Outfit</h2>
+    <p class="p-showpage">Upload up to 3 Shoe images here</p>
   </div>
   <%# card to display outfit pic %>
   <div class="container d-flex justify-content-between p-2">
@@ -49,9 +49,9 @@
     </div>
   </div>
   <div class="description_box">
-    <p>Event date: <%= @outfit.event_date.strftime("%a %d %b %y, %l:%M %p") %></p>
-    <p>Event type: <%= @outfit.event_type.humanize %></p>
-    <p>Amount of walking: <%= @outfit.walking_time.humanize %></p>
+    <p><i class="fas fa-history"></i> <%= @outfit.event_date.strftime("%d/%m/%y, %l:%M %p") %></p>
+    <p><i class="fas fa-calendar-alt"></i> <%= @outfit.event_type.humanize %></p>
+    <p><i class="fas fa-walking"></i> <%= @outfit.walking_time.humanize %></p>
   </div>
 </div>
 
