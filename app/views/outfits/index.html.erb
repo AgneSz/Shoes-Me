@@ -7,7 +7,7 @@
           <%= image_tag outfit.user.avatar.attached? ? outfit.user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
           <div class="user-info">
             <h5><%= link_to "@#{outfit.user.username}", user_path(outfit.user) %></h5>
-            <p><%= current_user.outfits.length %> outfits completed</p>
+            <p><%= outfit.user.outfits.length %> outfits completed</p>
           </div>
         </div>
         <div class="d-flex">
@@ -16,12 +16,12 @@
             </div>
             <div class="description_box">
               <% if outfit.event_date && (outfit.event_date - Time.now)/3600 >= 2 %>
-                <p><i class="fas fa-history"></i> <%= ((outfit.event_date - Time.now)/3600).round %> hours left to vote</p>
+                <p><i class="fas fa-history"></i> <%= outfit.time_left %>  left to vote</p>
               <% else %>
                 <p>Votes are closed!</p>
               <% end %>
-              <p><i class="fas fa-calendar-alt"></i> <%= outfit.event_type&.humanize  || "has not been set" %></p>
-              <p><i class="fas fa-walking"></i> <%= outfit.walking_time&.humanize || "0" %></p>
+              <p><i class="<%= outfit.event_type_icon %>"></i> <%= outfit.event_type&.humanize  || "has not been set" %></p>
+              <p><i class="<%= outfit.walking_time_icon %>"></i> <%= outfit.walking_time&.humanize || "0" %></p>
               <p>
                <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Comments
@@ -62,6 +62,20 @@
                   <% end %>
                 </div>
               </div>
+            <% end %>
+            <% shoes = outfit.shoes %>
+            <% unless shoes.empty? %>
+            <% shoe_ids = shoes.map(&:id)%>
+            <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
+            <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first %>
+            <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
+              <div class="btn-group dropleft dropdown-options">
+               <i class="fas fa-ellipsis-v" id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                 <div class="dropdown-menu" aria-labelledby="dropdown_menue_shoe_<%= recommended_shoe.id %>">
+                 <%= link_to "Save to Wishlist", shoe_wishes_path(recommended_shoe), class: "edit-user", method: :post %>
+                 </div>
+              </div>
+            </div>
             <% end %>
           </div>
         </div>
