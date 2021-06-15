@@ -20,8 +20,8 @@
               <% else %>
                 <p>Votes are closed!</p>
               <% end %>
-              <p><i class="fas fa-calendar-alt"></i> <%= outfit.event_type&.humanize  || "has not been set" %></p>
-              <p><i class="fas fa-walking"></i> <%= outfit.walking_time&.humanize || "0" %></p>
+              <p><i class="<%= outfit.event_type_icon %>"></i> <%= outfit.event_type&.humanize  || "has not been set" %></p>
+              <p><i class="<%= outfit.walking_time_icon %>"></i> <%= outfit.walking_time&.humanize || "0" %></p>
               <p>
                <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Comments
