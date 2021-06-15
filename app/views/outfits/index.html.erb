@@ -7,7 +7,7 @@
           <%= image_tag outfit.user.avatar.attached? ? outfit.user.avatar : "photo.png", alt: "alttext", class: 'avatar mr-3' %>
           <div class="user-info">
             <h5><%= link_to "@#{outfit.user.username}", user_path(outfit.user) %></h5>
-            <p><%= current_user.outfits.length %> outfits completed</p>
+            <p><%= outfit.user.outfits.length %> outfits completed</p>
           </div>
         </div>
         <div class="d-flex">
