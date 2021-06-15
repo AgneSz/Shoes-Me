@@ -1,4 +1,5 @@
 class Outfit < ApplicationRecord
+include ActionView::Helpers::TextHelper
   EVENT_TYPES = %w[wedding_or_bridal business cocktail_party ball_or_prom party night_out formal_event casual_event a_date outdoor_event]
   WALKING_TIME = %w[under_1_hr up_to_5_hrs more_than_5_hrs]
   belongs_to :user
@@ -7,6 +8,7 @@ class Outfit < ApplicationRecord
   has_many :outfit_categories, dependent: :destroy
   has_many :categories, through: :outfit_categories
   has_one_attached :photo
+
 
   def event_type_icon
     if event_type == "date" || event_type == "a_date"
@@ -38,7 +40,15 @@ class Outfit < ApplicationRecord
     elsif walking_time == "up_to_5_hrs" || walking_time == "up_to_5_hours"
       return "fas fa-running"
     elsif walking_time == "more_than_5_hrs" || walking_time == "more_than_5_hours"
-      return "fas fa-hiking" 
+      return "fas fa-hiking"
     end
   end
-end
+  
+  def time_left
+    hours = ((event_date - Time.now)/3600).round
+    if hours < 24
+      return pluralize(hours, 'hour')
+    else
+      return pluralize(hours/24, 'day')
+    end
+  end
