@@ -15,7 +15,7 @@
   <% end %>
   <div class="mb-5"></div>
 
-  <div class="border-top">
+  <div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <% if current_page?(user_path(current_user)) %>
       <li class="nav-item col-6">
@@ -23,12 +23,16 @@
       <li class="nav-item col-12">
       <% end %>
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-        <%= image_tag 'history.png' %></a>
+        <%= image_tag 'history.png' %>
+        <div class="nav-link-border-hider"></div>
+        </a>
       </li>
       <% if current_page?(user_path(current_user)) %>
       <li class="nav-item col-6">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-        <%= image_tag 'heart.png' %></a>
+        <%= image_tag 'heart.png' %>
+        <div class="nav-link-border-hider"></div>
+        </a>
         <!-- wishlist - only auto generated in next project phase - atm placeholder -->
       </li>
       <% end %>
@@ -41,10 +45,11 @@
         <% @user.outfits.each do |outfit| %>
           <%= link_to outfit_path(outfit), class:'show-link' do %>
           <div class='outfit-user-card'>
-            <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+            <div class="user-show-top-bar top-bar">
+              <p><i class="fas fa-history"></i> <%= outfit.event_date.strftime("%d/%m/%y, %l:%M %p") || "has not been set" %></p>
+              <p><i class="<%= outfit.event_type_icon %>"></i> <%= outfit.event_type.humanize %></p>
             </div>
-            <div>
-              <p class='outfit-user-time'>Event date: <%= outfit.event_date&.strftime("%a %d %b %y, %l:%M %p") || "has not been set" %></p>
+            <div class=" user-outfit-photo outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
             </div>
           </div>
           <% end %>
