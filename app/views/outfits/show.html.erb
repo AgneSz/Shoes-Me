@@ -36,7 +36,7 @@
           <h1>+</h1>
         </div>
       <% end %>
-      <% unless @shoes.empty? %> 
+      <% unless @shoes.empty? %>
         <div class="shoe-div reco-shoe" style="background-image: url('<%= @recommended_shoe.photo.attached? ? cl_image_path(@recommended_shoe.photo.key) : "" %>')">
           <div class="btn-group dropleft dropdown-options">
             <i class="fas fa-ellipsis-v" id="dropdown_menue_shoe_<%= @recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
