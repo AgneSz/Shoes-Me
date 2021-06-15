@@ -22,14 +22,21 @@
 
 .outfit-user-card {
   background-color: white;
-  padding: 8px;
+  padding: 6px;
+  padding-top: 2px;
   border-radius: 8px;
   width: 100%;
-  // display: flex;
-  // align-items: flex-start;
-  // justify-content: space-between;
-  // height: calc(100vw - 8px);
   margin-bottom: 12px;
+  border-style: solid;
+}
+
+.user-outfit-photo {
+  margin-right: 0;
+}
+
+.user-show-top-bar {
+  margin: 3px 0px 3px 0px;
+  display: block;
 }
 
 .fcen {
@@ -70,23 +77,38 @@
   display: block;
   text-align: center;
   opacity: 0.5;
+  border-bottom: 1px solid transparent;
   &.active {
-    opacity: 1
+    opacity: 1;
+    border-color: black black transparent !important;
+    .nav-link-border-hider {
+      bottom: -2px;
+      height: 2px;
+    }
+  }
+  .nav-link-border-hider {
+    width:83%;
+    position: absolute;
+    left:15px;
+    bottom:2px;
+    height: 0px;
+    background-color: #f4f4f4;
   }
 }
 
 .nav-tabs {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 
 .wish-shoe {
-  margin: 8px;
+  margin: 15px;
   width: -webkit-fill-available;
 }
 
 .buy-now {
   position: absolute;
   top: 4px;
-  left: 240px;
+  left: 226px;
 }
