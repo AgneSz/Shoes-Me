@@ -55,6 +55,10 @@ class OutfitsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def trending
+    @trending_shoes = Shoe.all.sort_by { |shoe| -shoe.votes_for.size }.first(3)
+  end
+
   private
 
   def set_outfit

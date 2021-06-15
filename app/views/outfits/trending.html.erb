@@ -1,0 +1,26 @@
+<div class="container pbbig">
+  <div class="outfit_header">
+    <h2 class="h-trending">Top Trending Outfits!</h2>
+    <p class="p-trending">This weeks most voted on shoes...</p>
+  </div>
+  <%# card to display outfit pic %>
+  
+  <% @trending_shoes.each do |trending_shoe| %>
+    <div class="trending_outfit_container">
+      <div class="trending-outfit-photo outfit-photo" style="background-image: url('<%= trending_shoe.outfit.photo.attached? ? cl_image_path(trending_shoe.outfit.photo.key) : 'photo.png' %>');">
+      </div>
+      <div class="trending-right-box">
+        <div class="trending-top-bar top-bar mb-2">
+          <%= image_tag trending_shoe.outfit.user.avatar.attached? ? trending_shoe.outfit.user.avatar : "photo.png", alt: "alttext", class: 'trending-avatar mr-3' %>
+          <div class="user-info">
+            <h5><%= link_to "@#{trending_shoe.outfit.user.username}", user_path(trending_shoe.outfit.user) %></h5>
+            <p><%= trending_shoe.outfit.user.outfits.length %> outfits completed</p>
+            <p><i class="<%= trending_shoe.outfit.event_type_icon %>"></i> <%= trending_shoe.outfit.event_type.humanize %></p>
+            <p><i class="fas fa-walking"></i> <%= trending_shoe.outfit.walking_time.humanize %></p>
+          </div>
+        </div>
+        <%= trending_shoe.photo.attached? ? cl_image_tag(trending_shoe.photo.key) : image_tag('photo.png') %>
+      </div>
+    </div>
+  <% end %>
+</div>
