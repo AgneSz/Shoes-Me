@@ -1,7 +1,7 @@
 <footer>
   <div class="list-footer">
     <ul>
-    <% if current_page?('/') %>
+    <% if current_page?(root_path) %>
       <li class='current-path'>
         <%= link_to root_path do %>
           <%= image_tag 'home.png' %>
@@ -34,13 +34,13 @@
         </div>
       <% end %>
         </li>
-      <% if current_page?('/') %>
+      <% if current_page?(trending_path) %>
         <li class='current-path'>
-          <%= link_to root_path do %>
+          <%= link_to trending_path do %>
             <%= image_tag 'flame.png' %>
           <% end %>
       <% else %>
-          <%= link_to root_path do %>
+          <%= link_to trending_path do %>
             <%= image_tag 'flame.png', class:'other-path' %>
           <% end %>
       <% end %>
