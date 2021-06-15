@@ -24,7 +24,7 @@ photos.each do |photo|
     user_id: user.id,
     brand: %w[Topshop Zara H&M RiverIsland COS Monki MintVelvet].sample,
     event_type: %w[wedding_or_bridal business cocktail_party ball_or_prom party night_out formal_event casual_event date outdoor_event].sample,
-    walking_time: %w[under_one_hour up_to_5_hours more_than_5_hours].sample,
+    walking_time: %w[under_1_hr up_to_5_hrs more_than_5_hrs].sample,
     event_date: DateTime.now + 1.day
   )
     file = URI.open(photo)
