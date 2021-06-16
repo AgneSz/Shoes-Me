@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @new_outfit = Outfit.new
   end
+
+  def about
+    @new_outfit = Outfit.new
+  end
 end

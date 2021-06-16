@@ -56,6 +56,7 @@ class OutfitsController < ApplicationController
 
   def trending
     @trending_shoes = Shoe.all.sort_by { |shoe| -shoe.votes_for.size }.first(3)
+    @new_outfit = Outfit.new
   end
 
   private
