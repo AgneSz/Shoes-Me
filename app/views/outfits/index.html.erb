@@ -24,12 +24,12 @@
               <p><i class="<%= outfit.walking_time_icon %>"></i> <%= outfit.walking_time&.humanize || "0" %></p>
               <p>
                <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Comments
+                  <i class="far fa-comment"></i> Comments
                 </a>
               </p>
               <div class="collapse" id="collapseExample">
                 <%= simple_form_for [outfit, @feedback] do |f| %>
-                  <%= f.input :content, label: false %>
+                  <%= f.input :content, label: false, class: "container-content" %>
                   <%= f.submit "Add a comment", class: "btn btn-primary" %>
                 <% end %>
                 <% outfit.feedbacks.each do |feedback| %>
@@ -47,14 +47,14 @@
               <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
                 <div class="tl">
                   <span id="shoe-<%= shoe.id %>">
-                    <%= shoe.get_likes.count%>
+                    <%= shoe.get_likes(vote_scope: outfit.id).count%>
                   </span>
-                  <% if current_user.liked? shoe %>
-                    <%= link_to like_shoe_path(shoe, "unlike", from: "index"), class: 'red-like', method: :put, remote: :true do  %>
+                  <% if current_user.liked? shoe, vote_scope: outfit.id %>
+                    <%= link_to like_shoe_path(shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
                       <i class="fas fa-heart"></i>
                     <% end %>
                     <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
-                    <%= link_to like_shoe_path(shoe, "like", from: "index"), method: :put, remote: :true do  %>
+                    <%= link_to like_shoe_path(shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
                       <i class="far fa-heart"></i>
                     <% end %>
                   <% else %>
@@ -65,17 +65,32 @@
             <% end %>
             <% shoes = outfit.shoes %>
             <% unless shoes.empty? %>
-            <% shoe_ids = shoes.map(&:id)%>
-            <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
-            <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first %>
-            <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
-              <div class="btn-group dropleft dropdown-options">
-               <i class="fas fa-ellipsis-v" id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                 <div class="dropdown-menu" aria-labelledby="dropdown_menue_shoe_<%= recommended_shoe.id %>">
-                 <%= link_to "Save to Wishlist", shoe_wishes_path(recommended_shoe), class: "edit-user", method: :post %>
-                 </div>
-              </div>
-            </div>
+              <% shoe_ids = shoes.map(&:id)%>
+              <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
+              <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first %>
+              <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
+                <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
+                  <div class="btn-group dropleft dropdown-options">
+                   <i id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  </div>
+                  <div class="tl">
+                    <span id="shoe-<%= recommended_shoe.id %>">
+                      <%= recommended_shoe.get_likes(vote_scope: outfit.id).count%>
+                    </span>
+                    <% if current_user.liked? recommended_shoe, vote_scope: outfit.id %>
+                      <%= link_to like_shoe_path(recommended_shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
+                        <i class="fas fa-heart"></i>
+                      <% end %>
+                      <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
+                      <%= link_to like_shoe_path(recommended_shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
+                        <i class="far fa-heart"></i>
+                      <% end %>
+                    <% else %>
+                     <i class="far fa-heart"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

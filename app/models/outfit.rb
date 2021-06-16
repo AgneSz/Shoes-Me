@@ -52,3 +52,7 @@ include ActionView::Helpers::TextHelper
       return pluralize(hours/24, 'day')
     end
   end
+end
+
+
+

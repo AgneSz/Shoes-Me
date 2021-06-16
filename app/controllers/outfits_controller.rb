@@ -31,7 +31,6 @@ class OutfitsController < ApplicationController
       flash[:notice] = "Success!"
       redirect_to outfit_path(@outfit)
     else
-      raise
       flash[:alert] = "Ooops, something went wrong!"
       render :new
     end

@@ -34,15 +34,15 @@ class ShoesController < ApplicationController
 
   def like
     @outfit = @shoe.outfit
-    @outfit.shoes.each do |shoe|
-      shoe.unliked_by current_user
+    liked_shoe_outfit = Outfit.find(params[:vote_scope])
+    current_user.find_liked_items(vote_scope: liked_shoe_outfit.id).each do |shoe|
+      shoe.unliked_by current_user, vote_scope: liked_shoe_outfit.id
     end
     if params[:format] == "like"
-      @shoe.liked_by current_user
+      @shoe.liked_by current_user, vote_scope: liked_shoe_outfit.id
     elsif params[:format] == "unlike"
-      @shoe.unliked_by current_user
+      @shoe.unliked_by current_user, vote_scope: liked_shoe_outfit.id
     end
-
     if params[:from] == "index"
       redirect_to outfits_path(anchor: "shoe-#{@shoe.id}")
     else
