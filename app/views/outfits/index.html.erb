@@ -102,5 +102,21 @@
     </div>
   <% end %>
 </div>
+<% if params[:scroll].present? %>
+  <script>
+    document.addEventListener('turbolinks:load', () => {
+      if (localStorage['scroll']) {
+        window.scrollTo({ top: localStorage['scroll'] });
+      }
+    });
+  </script>
+<% end %>
 
+<script>
+  document.addEventListener('turbolinks:load', () => {
+    window.addEventListener('scroll', () => {
+      localStorage['scroll'] = window.scrollY;
+    });
+  })
+</script>
 
