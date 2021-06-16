@@ -49,16 +49,18 @@
                   <span id="shoe-<%= shoe.id %>">
                     <%= shoe.get_likes(vote_scope: outfit.id).count%>
                   </span>
-                  <% if current_user.liked? shoe, vote_scope: outfit.id %>
-                    <%= link_to like_shoe_path(shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
-                      <i class="fas fa-heart"></i>
+                  <% if user_signed_in? %>
+                    <% if current_user.liked? shoe, vote_scope: outfit.id %>
+                      <%= link_to like_shoe_path(shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
+                        <i class="fas fa-heart"></i>
+                      <% end %>
+                      <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
+                      <%= link_to like_shoe_path(shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
+                        <i class="far fa-heart"></i>
+                      <% end %>
+                    <% else %>
+                     <i class="far fa-heart"></i>
                     <% end %>
-                    <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
-                    <%= link_to like_shoe_path(shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                  <% else %>
-                   <i class="far fa-heart"></i>
                   <% end %>
                 </div>
               </div>
@@ -77,16 +79,18 @@
                     <span id="shoe-<%= recommended_shoe.id %>">
                       <%= recommended_shoe.get_likes(vote_scope: outfit.id).count%>
                     </span>
-                    <% if current_user.liked? recommended_shoe, vote_scope: outfit.id %>
-                      <%= link_to like_shoe_path(recommended_shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
-                        <i class="fas fa-heart"></i>
+                    <% if user_signed_in? %>
+                      <% if current_user.liked? recommended_shoe, vote_scope: outfit.id %>
+                        <%= link_to like_shoe_path(recommended_shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
+                          <i class="fas fa-heart"></i>
+                        <% end %>
+                        <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
+                        <%= link_to like_shoe_path(recommended_shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                      <% else %>
+                       <i class="far fa-heart"></i>
                       <% end %>
-                      <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
-                      <%= link_to like_shoe_path(recommended_shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
-                        <i class="far fa-heart"></i>
-                      <% end %>
-                    <% else %>
-                     <i class="far fa-heart"></i>
                     <% end %>
                   </div>
                 </div>
