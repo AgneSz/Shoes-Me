@@ -47,6 +47,7 @@
   font-family: 'Anton', sans-serif;
   padding-left: 15px;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .bottom-left {
@@ -55,6 +56,10 @@
   left: 12px;
   color: white;
   // font-size: 5px;
+}
+
+.carousel-height {
+  height: 260px;
 }
 
 .home-icon {

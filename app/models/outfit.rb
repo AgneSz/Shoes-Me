@@ -53,6 +53,3 @@ include ActionView::Helpers::TextHelper
     end
   end
 end
-
-
-
