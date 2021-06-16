@@ -1,6 +1,6 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!, only: :index
   def index
     @outfits = Outfit.all.order(created_at: :desc) # checked!
     @new_outfit = Outfit.new
