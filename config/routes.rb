@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :outfits, except: [:create] do
+  resources :outfits do
     resources :shoes, only: [:new, :create, :edit, :update]
     resources :feedbacks, only: [:create, :update]
   end
