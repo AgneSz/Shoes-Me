@@ -9,8 +9,8 @@
           <%= image_tag 'menu.png' %>
         </a>
         <div class="dropdown-menu">
-          <%= link_to "Edit profile", edit_user_registration_path, class: 'logout' %>
-          <%= link_to "Log out", destroy_user_session_path, class:'logout', method: :delete %>
+          <%= link_to "Edit profile", edit_user_registration_path, class: 'edit-user mb-3' %>
+          <%= link_to "Log out", destroy_user_session_path, class:'logout mb-3', method: :delete %>
           <%= link_to "About Us", about_path, class: 'logout' %>
         </div>
       </div>

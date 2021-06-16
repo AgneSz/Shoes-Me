@@ -36,11 +36,11 @@
       <% end %>
       <% length = 3 - @shoes.length %>
       <% if current_user == @outfit.user %>
-      <% length.times do  %>
-        <div class="add-shoe-div" data-toggle="modal" data-target="#newshoeModal">
-          <h1>+</h1>
-        </div>
-      <% end %>
+        <% length.times do  %>
+          <div class="add-shoe-div" data-toggle="modal" data-target="#newshoeModal">
+            <h1>+</h1>
+          </div>
+        <% end %>
       <% end %>
       <% unless @shoes.empty? %> 
       <% if @recommended_shoe.present? && @recommended_shoe.photo.attached?%>
