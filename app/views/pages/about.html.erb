@@ -1,105 +1,93 @@
 <div class="bg-white px-3 py-2 mx-3 my-2 rounded">
-  <div>
-    <h5 class="mission">Shoe-Me Mission Statement: Never again end up wearing crocks to your wedding!</h5>
-  </div>
-
-
-  <h6 class="mission">People Behind Shoe-Me Success</h6>
-
-  <div class="about-us-grid">
-
-    <div class="showcard mt-4">
-      <%= image_tag "user.png", alt: "alttext", class: "us-photo"%>
-      <button type="button" class="btn-grey-1" data-toggle="modal" data-target="#Modal1" class="blue-btn">Meet Aga</button>
+  <div class='header' style="background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(<%= asset_path('banner2.jpg') %>)">
+    <div class="header-text w-100">
+      <h1>About-Us</h1>
     </div>
-
+  </div>
+  <div>
+  <h5 class="mission">Shoe-Me Mission Statement: Never again end up wearing crocks to your wedding!</h5>
+  </div>
+  <h6 class="mission">People Behind Shoe-Me Success</h6>
+    <div class="about-us-grid">
+    <div class="showcard mt-4">
+    <%= image_tag "Aga.jpeg", alt: "alttext", class: "us-photo"%>
+    <button type="button" class="btn-grey-1 blue-btn" data-toggle="modal" data-target="#Modal1">Meet Aga</button>
     <!-- modal -->
     <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">About Aga</h5>
+            <h3 class="modal-title">About Aga</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <h3>Lorem ipsum dolor, sit amet consectetur, adipisicing elit. Mollitia modi rem quis perferendis voluptas, tempora natus maxime repellat autem, repellendus magni cupiditate facere. Nobis, odit, quod! Voluptatem mollitia delectus quos.</h3>
-            <br>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Facere ipsum atque enim voluptatibus libero labore facilis aspernatur fugiat sequi alias quibusdam eius dolore, nisi, minus quidem saepe, consectetur nobis, tempora.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="showcard mt-4">
-      <%= image_tag "user.png", alt: "alttext", class: "us-photo"%>
-      <button type="button" class="btn-grey-1" data-toggle="modal" data-target="#Modal2" class="blue-btn">Meet Chloe</button>
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">About Chloe</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias voluptatem quisquam, ut laborum amet. Minima illum cupiditate dolorum harum excepturi, iure animi. Est quos consectetur pariatur voluptas voluptatibus officiis saepe!</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="showcard mt-4">
-      <%= image_tag "user.png", alt: "alttext", class: "us-photo"%>
-      <button type="button" class="btn-grey-1" data-toggle="modal" data-target="#Modal3" class="blue-btn">Meet Don</button>
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">About Don</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dolore deserunt, modi esse quam, saepe officiis incidunt debitis ad, asperiores autem. Laboriosam expedita at suscipit deserunt doloribus dolores necessitatibus iste.</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="showcard mt-4">
-      <%= image_tag "user.png", alt: "alttext", class: "us-photo"%>
-      <button type="button" class="btn-grey-1" data-toggle="modal" data-target="#Modal4" class="blue-btn">Meet Radha</button>
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="Modal4" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">About Radha</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt est itaque nostrum officiis quasi tempore molestias, sequi maiores animi temporibus minus, id ipsum neque possimus nesciunt sapiente voluptatibus maxime eum!</h3>
+            <h5>Hi! I'm Aga and I have lived in London for 10 years. I have a BA in History but my working life has been in Finance where I spent over 8 years working as an Accountant. Recently, I decided to try coding and I'm looking forward to embarking on this new journey and becoming full stack developer</h5>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="showcard mt-4">
+    <%= image_tag "Chloe.jpeg", alt: "alttext", class: "us-photo"%>
+    <button type="button" class="btn-grey-1 blue-btn" data-toggle="modal" data-target="#Modal2">Meet Chloe</button>
+    <!-- modal -->
+    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">About Chloe</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>Hi everyone, I received my master degree in international relations in Paris few years ago.Then, I worked in an insurance financial advisory company for one year in Canada. I love learning new things and being constantly challenged, and a, now looking to transition in the tech industry as a Full-stack developer.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="showcard mt-4">
+    <%= image_tag "Don.jpg", alt: "alttext", class: "us-photo"%>
+    <button type="button" class="btn-grey-1 blue-btn" data-toggle="modal" data-target="#Modal3">Meet Don</button>
+    <!-- modal -->
+    <div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">About Don</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>Hey I'm Bastien but everyone calls me Don. I have a BA in English and worked in hospitality for a year. I started coding because I like the logical and the creative process of it. In the future, I would love to work as a web developer in an environment contributing to the cultural and artistic fields</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="showcard mt-4">
+    <%= image_tag "Radha.png", alt: "alttext", class: "us-photo"%>
+    <button type="button" class="btn-grey-1 blue-btn" data-toggle="modal" data-target="#Modal4">Meet Radha</button>
+    <!-- modal -->
+    <div class="modal fade" id="Modal4" tabindex="-1" role="dialog" aria-labelledby="outfitModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">About Radha</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>I've spent the last 8 years working in the Fashion Retail Industry as a Buyer. Loved this role but reckon it's time for a change! Hence re-training to become a developer and land a new role that's still creative.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
