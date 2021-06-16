@@ -24,7 +24,7 @@
               <p><i class="<%= outfit.walking_time_icon %>"></i> <%= outfit.walking_time&.humanize || "0" %></p>
               <p>
                <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="far fa-comment"></i> Comments
+                  <i class="far fa-comment"></i> <%= outfit.feedbacks.count %> Comments
                 </a>
               </p>
               <div class="collapse" id="collapseExample">
@@ -52,7 +52,7 @@
                   <% if user_signed_in? %>
                     <% if current_user.liked? shoe, vote_scope: outfit.id %>
                       <%= link_to like_shoe_path(shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart red-like"></i>
                       <% end %>
                       <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
                       <%= link_to like_shoe_path(shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
@@ -102,5 +102,21 @@
     </div>
   <% end %>
 </div>
+<% if params[:scroll].present? %>
+  <script>
+    document.addEventListener('turbolinks:load', () => {
+      if (localStorage['scroll']) {
+        window.scrollTo({ top: localStorage['scroll'] });
+      }
+    });
+  </script>
+<% end %>
 
+<script>
+  document.addEventListener('turbolinks:load', () => {
+    window.addEventListener('scroll', () => {
+      localStorage['scroll'] = window.scrollY;
+    });
+  })
+</script>
 

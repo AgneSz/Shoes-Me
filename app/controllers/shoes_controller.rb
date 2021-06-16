@@ -44,9 +44,9 @@ class ShoesController < ApplicationController
       @shoe.unliked_by current_user, vote_scope: liked_shoe_outfit.id
     end
     if params[:from] == "index"
-      redirect_to outfits_path(anchor: "shoe-#{@shoe.id}")
+      redirect_to outfits_path(scroll: true)
     else
-      redirect_to outfit_path(@outfit, anchor: "shoe-#{@shoe.id}")
+      redirect_to outfit_path(@outfit, scroll: true)
     end
   end
 
