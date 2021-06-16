@@ -6,6 +6,7 @@ class WishesController < ApplicationController
     @wish.user = @user
     @wish.shoe = @shoe
     @wish.save
-    redirect_to outfit_path(@shoe.outfit)
+    outfit = Outfit.find(params["outfit_id"])
+    redirect_to outfit_path(outfit)
   end
 end
