@@ -24,7 +24,7 @@
               <p><i class="<%= outfit.walking_time_icon %>"></i> <%= outfit.walking_time&.humanize || "0" %></p>
               <p>
                <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="far fa-comment"></i> Comments
+                  <i class="far fa-comment"></i> <%= outfit.feedbacks.count %> Comments
                 </a>
               </p>
               <div class="collapse" id="collapseExample">
