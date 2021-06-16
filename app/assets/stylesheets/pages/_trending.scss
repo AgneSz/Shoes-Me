@@ -24,6 +24,7 @@
 .trending-outfit-photo {
   margin: 0;
   width: 50%;
+  height: 56vh !important;
 }
 
 .trending_outfit_container {
@@ -48,7 +49,7 @@
     border-radius: 8px;
     margin: 0;
     width: 100%;
-    height: 48%;
+    height: 48% !important;
     object-fit: cover;
   }
 }

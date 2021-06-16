@@ -48,7 +48,11 @@
           <div class="btn-group dropleft dropdown-options">
             <i class="fas fa-ellipsis-v" id="dropdown_menue_shoe_<%= @recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu" aria-labelledby="dropdown_menue_shoe_<%= @recommended_shoe.id %>">
-              <%= link_to "Save to Wishlist", shoe_wishes_path(@recommended_shoe), class: "edit-user", method: :post %>
+              <% if Wish.where(user: current_user, shoe: @recommended_shoe).present? %>
+                <p class=" saved edit-user">You've already saved this!</p>
+              <% else %>
+                <%= link_to "Save to Wishlist", shoe_wishes_path(@recommended_shoe, outfit_id: @outfit.id), class: "edit-user", method: :post %>
+              <% end %>
             </div>
           </div>
         </div>
