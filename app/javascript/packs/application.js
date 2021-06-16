@@ -24,7 +24,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import 'flatpickr/dist/flatpickr.css';
 import { initFlatpickr } from "../plugins/flatpickr";
 import { previewImageOnFileSelect } from "../components/photo_preview";
 
