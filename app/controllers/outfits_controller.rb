@@ -15,7 +15,7 @@ class OutfitsController < ApplicationController
     if @shoes
       shoe_ids = @shoes.map(&:id)
       category_names = @shoes.map(&:categories).flatten.map(&:name).uniq
-      @recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).uniq.sample
+      @recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).uniq.first
     end
   end
 
