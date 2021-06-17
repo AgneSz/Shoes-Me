@@ -4,6 +4,8 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
   .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
@@ -23,7 +25,7 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+   /* border-top: #B00100 solid 4px;*/
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -31,11 +33,6 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
 
   .rails-default-error-page div.dialog > p {
     margin: 0 0 1em;
@@ -51,16 +48,73 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .error-text {
+    position: absolute;
+    bottom: 50px;
+    font-family: 'Anton', sans-serif;
+    /*// font-family: 'Comfortaa', cursive;*/
+    font-size: 200px;
+  }
+
+  .outfit_card {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .error-text {
+    position: absolute;
+    top: 1vh;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    left: 0;
+    padding: 0 40px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .error-photo-styling {
+    background-image: url(banner2.jpg);
+    height: calc(100vh - 4em);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0px center;
+    position: relative;
+  }
+
+  .blue-btn {
+    background-color: white;
+    padding: 5px 20px;
+    color: black;
+    border: solid black;
+  }
+
+.btn-position {
+    position: absolute;
+    bottom: 50px;
+    left: 140px;
+  }
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+    <div class="error-photo-styling">
+      <h1 class="error-text">Last night a thief broke into the shoe factory. He was the sole perpetrator.</h1>
+      <!-- <p class="error-text">You may have mistyped the address or the page may have moved.</p> -->
+       <button type="button" class="blue-btn btn-position"><a href="/">Home Page</a></button>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+   <!--  <p class="error-text">If you are the application owner check the logs for more information.</p> -->
   </div>
+  <!-- <img src='banner.jpg' width=500> -->
 </body>
 </html>
