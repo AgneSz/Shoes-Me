@@ -1,4 +1,4 @@
 meta_product_name: "Shoes-Me"
 meta_title: "Find the Perfect Pair for your Outfit!"
 meta_description: "We'll help you choose the right pair of shoes for your outfit and even recommend a new pair that you can buy"
-meta_image: "banner2.jpg" # should exist in `app/assets/images/`
+meta_image: "og_banner.jpg" # should exist in `app/assets/images/`
