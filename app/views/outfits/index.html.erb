@@ -72,7 +72,7 @@
             <% unless shoes.empty? %>
               <% shoe_ids = shoes.map(&:id)%>
               <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
-              <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).uniq.first %>
+              <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).uniq.sample %>
               <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
                 <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
                   <div class="btn-group dropleft dropdown-options">
