@@ -27,8 +27,8 @@
           <div class="btn-group dropleft dropdown-options">
             <i class="fas fa-ellipsis-v" id="dropdown_menue_shoe_<%= shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu" aria-labelledby="dropdown_menue_shoe_<%= shoe.id %>">
-              <%= link_to "Edit your Shoes", edit_outfit_shoe_path(@outfit, shoe), class: "edit-user" %>
-              <%= link_to "Delete your shoes", shoe_path(shoe), class: "logout", method: :delete, data: { confirm: "Are you sure?" }%>
+              <%= link_to "Edit Shoes", edit_outfit_shoe_path(@outfit, shoe), class: "edit-user mb-2" %>
+              <%= link_to "Delete Shoes", shoe_path(shoe), class: "logout", method: :delete, data: { confirm: "Are you sure?" }%>
             </div>
           </div>
           <% end %>
