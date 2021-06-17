@@ -34,7 +34,7 @@
                 <% end %>
                 <% outfit.feedbacks.each do |feedback| %>
                 <p><%= feedback.user.username %>: <%= feedback.content %>
-                 <%= link_to feedback_path(feedback), method: :delete, remote: :true do  %>
+                 <%= link_to feedback_path(feedback), method: :delete, remote: :true do %>
                   <i class="fas fa-minus"></i>
                     <% end %>
                     </p>
