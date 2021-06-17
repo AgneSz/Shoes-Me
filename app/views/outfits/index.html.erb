@@ -28,16 +28,18 @@
                 </a>
               </p>
               <div class="collapse" id="collapseExample">
-                <%= simple_form_for [outfit, @feedback] do |f| %>
-                  <%= f.input :content, label: false, class: "container-content" %>
-                  <%= f.submit "Add a comment", class: "btn btn-primary" %>
-                <% end %>
-                <% outfit.feedbacks.each do |feedback| %>
-                <p><%= feedback.user.username %>: <%= feedback.content %>
-                 <%= link_to feedback_path(feedback), method: :delete, remote: :true do  %>
-                  <i class="fas fa-minus"></i>
-                    <% end %>
-                    </p>
+                <% if user_signed_in? %>
+                  <%= simple_form_for [outfit, @feedback] do |f| %>
+                    <%= f.input :content, label: false, class: "container-content" %>
+                    <%= f.submit "Add a comment", class: "btn btn-primary" %>
+                  <% end %>
+                  <% outfit.feedbacks.each do |feedback| %>
+                  <p><%= feedback.user.username %>: <%= feedback.content %>
+                   <%= link_to feedback_path(feedback), method: :delete, remote: :true do %>
+                    <i class="fas fa-minus"></i>
+                      <% end %>
+                      </p>
+                  <% end %>
                 <% end %>
               </div>
             </div>

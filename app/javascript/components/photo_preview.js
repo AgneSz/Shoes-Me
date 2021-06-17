@@ -1,13 +1,15 @@
 const previewImageOnFileSelect = () => {
   // we select the photo input
-  const input = document.getElementById('photo-input');
-  if (input) {
-    // we add a listener to know when a new picture is uploaded
-    input.addEventListener('change', () => {
-      // we call the displayPreview function (who retrieve the image url and display it)
-      displayPreview(input);
-    })
-  }
+  const inputs = [document.getElementById('photo-input'), document.getElementById('photo-input-2')];
+  inputs.filter(input => input).forEach((input) => {
+    if (input) {
+      // we add a listener to know when a new picture is uploaded
+      input.addEventListener('change', () => {
+        // we call the displayPreview function (who retrieve the image url and display it)
+        displayPreview(input);
+      })
+    }
+  })
 }
 
 const displayPreview = (input) => {

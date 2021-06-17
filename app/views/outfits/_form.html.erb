@@ -1,6 +1,6 @@
 <div class="margin-container">
   <% outfit = Outfit.new if devise_controller? %>
-  <%= simple_form_for [ outfit ] do |f| %>
+  <%= simple_form_for outfit do |f| %>
     <%= f.input :event_type,
                 collection: Outfit::EVENT_TYPES,
                 as: :select, label_method: :humanize %>
@@ -18,7 +18,8 @@
                 input_html: {class: 'category-selector'},
                 collection: Category.where(shoe:false).last(8),
                 label:"Outfit Style:",
-                label_method: lambda { |category| category.name.humanize} %>
+                value_method: :id,
+                label_method: lambda { |category| category.name.humanize } %>
     <%= f.association :categories,
                 as: :check_boxes,
                 item_wrapper_class: 'category-item',

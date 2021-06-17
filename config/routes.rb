@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :feedbacks, only: [:destroy]
-  resources :users, only: [:show] do
-    resources :outfits, only: [:create]
-  end
+  resources :users, only: [:show]
 
   get "trending", to: "outfits#trending"
 end
