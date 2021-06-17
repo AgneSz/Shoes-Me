@@ -23,8 +23,7 @@
       collection: Category.where(shoe:true).first(16),
       label:"Colour:",
       label_method: lambda { |category| category.name.humanize} %>
-    <%#= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input-2'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
 
     <% if @shoe.new_record? %>
       <%= f.submit "Create your shoes!", class: "blue-btn special" %>

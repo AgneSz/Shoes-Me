@@ -24,7 +24,6 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    raise
     @outfit = Outfit.new(outfit_params)
     @outfit.user = current_user
     @user = current_user
