@@ -1,6 +1,6 @@
 <div class="margin-container">
   <% outfit = Outfit.new if devise_controller? %>
-  <%= simple_form_for [ outfit ] do |f| %>
+  <%= simple_form_for outfit do |f| %>
     <%= f.input :event_type,
                 collection: Outfit::EVENT_TYPES,
                 as: :select, label_method: :humanize %>

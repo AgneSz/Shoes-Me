@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
     @feedback.user = current_user
     @feedback.outfit = Outfit.find(params[:outfit_id])
     if @feedback.save
-      redirect_to outfits_path
+      redirect_to outfits_path(scroll: true)
       # path to change to user_path(@user) (or profile path but something to do with where useres view their own bookings)
     else
       render :new

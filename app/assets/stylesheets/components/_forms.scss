@@ -21,8 +21,8 @@
 }
 
 .category-selector:checked + label {
-  background-color: black;
-  color: white;
+  background-color: black !important;
+  color: white !important;
 }
 
 // Coloring checkboxed for shoe form
