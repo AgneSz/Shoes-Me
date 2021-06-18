@@ -2,7 +2,7 @@ class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :index
   def index
-    @outfits = Outfit.includes(:shoes).order(created_at: :desc) # checked!
+    @outfits = Outfit.includes([:shoes, :user, :photo_attachment]).order(created_at: :desc) # checked!
     @new_outfit = Outfit.new
     @user = current_user
     @feedback = Feedback.new
