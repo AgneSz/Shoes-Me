@@ -68,35 +68,37 @@
                 </div>
               </div>
             <% end %>
-            <% shoes = outfit.shoes.includes([:shoe_categories, :categories]) %>
-            <% unless shoes.empty? %>
-              <% shoe_ids = shoes.map(&:id)%>
-              <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
-              <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).sort_by { |shoe| -(shoe.categories.map(&:name) - category_names).size }.first %>
-              <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
-                <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
-                  <div class="btn-group dropleft dropdown-options">
-                   <i id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                  </div>
-                  <div class="tl">
-                    <span id="shoe-<%= recommended_shoe.id %>">
-                      <%= recommended_shoe.get_likes(vote_scope: outfit.id).count%>
-                    </span>
-                    <% if user_signed_in? %>
-                      <% if current_user.liked? recommended_shoe, vote_scope: outfit.id %>
-                        <%= link_to like_shoe_path(recommended_shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
-                          <i class="fas fa-heart"></i>
+            <% cache outfit.shoes do %>
+              <% shoes = outfit.shoes.includes([:shoe_categories, :categories]) %>
+              <% unless shoes.empty? %>
+                <% shoe_ids = shoes.map(&:id)%>
+                <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
+                <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).sort_by { |shoe| -(shoe.categories.map(&:name) - category_names).size }.first %>
+                <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
+                  <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
+                    <div class="btn-group dropleft dropdown-options">
+                     <i id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                    </div>
+                    <div class="tl">
+                      <span id="shoe-<%= recommended_shoe.id %>">
+                        <%= recommended_shoe.get_likes(vote_scope: outfit.id).count%>
+                      </span>
+                      <% if user_signed_in? %>
+                        <% if current_user.liked? recommended_shoe, vote_scope: outfit.id %>
+                          <%= link_to like_shoe_path(recommended_shoe, "unlike", from: "index", vote_scope: outfit.id), class: 'red-like', method: :put, remote: :true do  %>
+                            <i class="fas fa-heart"></i>
+                          <% end %>
+                          <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
+                          <%= link_to like_shoe_path(recommended_shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
+                            <i class="far fa-heart"></i>
+                          <% end %>
+                        <% else %>
+                         <i class="far fa-heart"></i>
                         <% end %>
-                        <% elsif ((Time.now - (outfit.event_date || Time.now))/3600  <= -2) %>
-                        <%= link_to like_shoe_path(recommended_shoe, "like", from: "index", vote_scope: outfit.id), method: :put, remote: :true do  %>
-                          <i class="far fa-heart"></i>
-                        <% end %>
-                      <% else %>
-                       <i class="far fa-heart"></i>
                       <% end %>
-                    <% end %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
           </div>

@@ -1,5 +1,5 @@
 class Shoe < ApplicationRecord
-  belongs_to :outfit
+  belongs_to :outfit, touch: true
   has_many :shoe_categories, dependent: :destroy
   has_one_attached :photo
   has_many :categories, through: :shoe_categories
