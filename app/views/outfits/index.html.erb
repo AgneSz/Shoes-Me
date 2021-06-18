@@ -13,7 +13,7 @@
         </div>
         <div class="d-flex">
           <div class="d-flex flex-column outfit-photo-2">
-            <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');">
+            <div class="outfit-photo" style="background-image: url('<%= outfit.photo.attached? ? cl_image_path(outfit.photo.key) : 'photo.png' %>');" loading="lazy">
             </div>
             <div class="description_box">
               <% if outfit.event_date && (outfit.event_date - Time.now)/3600 >= 2 %>
@@ -68,15 +68,13 @@
                 </div>
               </div>
             <% end %>
-            <% cache outfit.shoes do %>
               <% shoes = outfit.shoes.includes([:shoe_categories, :categories]) %>
               <% unless shoes.empty? %>
                 <% shoe_ids = shoes.map(&:id)%>
                 <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
                 <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).sort_by { |shoe| -(shoe.categories.map(&:name) - category_names).size }.first %>
                 <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
-                  <% cache [recommended_shoe, recommended_shoe.votes_for] do %>
-                    <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
+                    <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')" loading="lazy">
                       <div class="btn-group dropleft dropdown-options">
                        <i id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                       </div>
@@ -100,14 +98,13 @@
                       </div>
                     </div>
                   <% end %>
-                <% end %>
               <% end %>
-            <% end %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+  <%= will_paginate @outfits %>
 </div>
 <% if params[:scroll].present? %>
   <script>
