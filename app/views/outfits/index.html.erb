@@ -75,7 +75,7 @@
                 <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
                 <% recommended_shoe = Shoe.joins(:categories).where.not(id: shoe_ids).where('categories.name in (?)', category_names).where.not(url: [nil, '']).sort_by { |shoe| -(shoe.categories.map(&:name) - category_names).size }.first %>
                 <% if recommended_shoe.present? && recommended_shoe.photo.attached?%>
-                  <% cache [recommended_shoe, recommended_shoe.get_likes] do %>
+                  <% cache [recommended_shoe, recommended_shoe.votes_for] do %>
                     <div class="shoe-div reco-shoe" style="background-image: url('<%= recommended_shoe.photo.attached? ? cl_image_path(recommended_shoe.photo.key) : "" %>')">
                       <div class="btn-group dropleft dropdown-options">
                        <i id="dropdown_menue_shoe_<%= recommended_shoe.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
