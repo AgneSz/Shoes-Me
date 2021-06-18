@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="f-col">
-            <% outfit.shoes.each do |shoe| %>
+            <% outfit.shoes.includes(:photo_attachment).each do |shoe| %>
               <div class="shoe-div" style="background-image: url('<%= shoe.photo.attached? ? cl_image_path(shoe.photo.key) : "" %>')">
                 <div class="tl">
                   <span id="shoe-<%= shoe.id %>">
@@ -68,7 +68,7 @@
                 </div>
               </div>
             <% end %>
-            <% shoes = outfit.shoes %>
+            <% shoes = outfit.shoes.includes([:shoe_categories, :categories]) %>
             <% unless shoes.empty? %>
               <% shoe_ids = shoes.map(&:id)%>
               <% category_names = shoes.map(&:categories).flatten.map(&:name).uniq%>
