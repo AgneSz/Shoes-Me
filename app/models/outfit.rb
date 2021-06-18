@@ -8,7 +8,7 @@ include ActionView::Helpers::TextHelper
   has_many :outfit_categories, dependent: :destroy
   has_many :categories, through: :outfit_categories
   has_one_attached :photo
-  self.per_page = 10
+  self.per_page = 6
 
 
   def event_type_icon
